@@ -100,19 +100,19 @@ body{font-family:var(--font-text);background:var(--bg);color:var(--text);line-he
 }
 .step{
   min-height:90vh;
-  display:flex;align-items:center;
-  padding:2rem;
+  display:flex;align-items:center;justify-content:flex-end;
+  padding:2rem 3.5rem 2rem 2rem;
   pointer-events:auto;
 }
 .step:first-child{margin-top:-50vh}
 .step:last-child{margin-bottom:30vh}
 .step-content{
-  max-width:420px;
-  background:rgba(10,10,10,.88);
+  max-width:360px;
+  background:rgba(10,16,24,.72);
   backdrop-filter:blur(12px);
   border:1px solid var(--border);
   border-radius:12px;
-  padding:2rem 2.5rem;
+  padding:1.4rem 1.6rem;
   opacity:0;
   transform:translateY(30px);
   transition:opacity .6s ease, transform .6s ease;
@@ -672,10 +672,10 @@ function initViz(){
     .join('path')
     .attr('class', 'country')
     .attr('d', path)
-    .attr('fill', '#dde6ef')
-    .attr('fill-opacity', 0.96)
-    .attr('stroke', '#8ea3ba')
-    .attr('stroke-opacity', 0.95)
+    .attr('fill', '#aab7c6')
+    .attr('fill-opacity', 0.94)
+    .attr('stroke', '#73869c')
+    .attr('stroke-opacity', 0.9)
     .attr('stroke-width', 0.9);
 
   // Trigger initial scene if scrollama already fired
@@ -722,7 +722,7 @@ function updateViz(sceneIdx){
     })
     .attr('opacity', d => {
       if(scene.highlightRound && d.rn !== scene.highlightRound) return 0.2;
-      return 0.85;
+      return 0.95;
     });
 
   // Update existing
@@ -740,7 +740,7 @@ function updateViz(sceneIdx){
     })
     .attr('opacity', d => {
       if(scene.highlightRound && d.rn !== scene.highlightRound) return 0.2;
-      return 0.85;
+      return 0.95;
     });
 
   // ─── NETWORK LINKS (Scene 5) ───
@@ -1112,13 +1112,13 @@ function applyFilters(){
       let match = true;
       if (activeRegion && d.reg !== activeRegion) match = false;
       if (activeCat && d.cat !== activeCat) match = false;
-      return match ? 0.7 : 0.08;
+      return match ? 0.92 : 0.12;
     })
     .attr('r', d => {
       let match = true;
       if (activeRegion && d.reg !== activeRegion) match = false;
       if (activeCat && d.cat !== activeCat) match = false;
-      return match ? 3.5 : 2;
+      return match ? 4.25 : 2.2;
     });
 }
 
