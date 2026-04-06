@@ -22,7 +22,7 @@
 **Visual:** Two more dots appear (still UK-area + Argentina). A tiny bar chart begins forming at the bottom — 3 bars for categories: privacy, lightning, wallet.
 **Text:**
 
-> Two months later, Round 2. Three more grants: a Lightning controller called Zeus, a full-node wallet, a privacy interface.
+> Two months later, Round 2. Three more grants: Zeus for Lightning node control, Fully Noded for mobile full-node access, and Openoms's JoinInbox for a graphical JoinMarket interface.
 >
 > The first $1 BTC grants to individual developers building tools people would actually use on their phones.
 
