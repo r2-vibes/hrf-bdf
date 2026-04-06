@@ -200,7 +200,45 @@ body{font-family:var(--font-text);background:var(--bg);color:var(--text);line-he
 }
 .explorer-chart h3{
   font-family:var(--font-mono);font-size:.8rem;color:var(--muted);
-  text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;
+  text-transform:uppercase;letter-spacing:.1em;margin-bottom:.45rem;
+}
+.chart-note{
+  font-size:.82rem;color:var(--muted);line-height:1.55;margin-bottom:1rem;
+}
+.selection-summary{
+  color:var(--muted);font-size:.9rem;line-height:1.6;margin:-1rem 0 1.75rem;
+}
+.featured-grants{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;
+}
+.featured-card,.global-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem;
+}
+.featured-kicker,.global-kicker{
+  font-family:var(--font-mono);font-size:.68rem;color:var(--green);letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:.5rem;
+}
+.featured-card h4,.global-card h4{font-size:1rem;margin-bottom:.4rem}
+.featured-meta{
+  color:var(--muted);font-size:.78rem;margin-bottom:.55rem;
+}
+.featured-desc,.global-card p{
+  color:var(--body);font-size:.9rem;line-height:1.6;
+}
+.global-module{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:1rem;margin-bottom:2rem;
+}
+.global-metrics{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1rem;
+}
+.global-metric{
+  background:rgba(255,255,255,.02);border:1px solid #1a1a1a;border-radius:10px;padding:.9rem;text-align:center;
+}
+.global-metric .value{
+  font-family:var(--font-mono);font-size:1.3rem;color:#90A4AE;display:block;
+}
+.global-metric .label{
+  color:var(--muted);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;margin-top:.25rem;
 }
 .grant-table-wrap{
   background:var(--card);border:1px solid var(--border);
@@ -240,9 +278,9 @@ footer a{color:var(--orange);text-decoration:none}
    RESPONSIVE
    ═══════════════════════════════════════════════════════════ */
 @media(max-width:768px){
-  .hero-stats{gap:1.5rem}
+  .hero-stats{gap:1.5rem;flex-wrap:wrap;justify-content:center}
   .step-content{max-width:90%;padding:1.5rem}
-  .explorer-grid{grid-template-columns:1fr}
+  .explorer-grid,.featured-grants,.global-module,.global-metrics{grid-template-columns:1fr}
   .grant-table{font-size:.75rem}
   .grant-table th,.grant-table td{padding:.5rem .6rem}
 }
@@ -254,10 +292,11 @@ footer a{color:var(--orange);text-decoration:none}
 <section class="hero">
   <div class="hero-kicker">Human Rights Foundation</div>
   <h1>Building Freedom <span>With Code</span></h1>
-  <p class="hero-sub">297 grants. 242 developers. 55+ countries. The story of the Bitcoin Development Fund.</p>
+  <p class="hero-sub">How HRF helped fund Bitcoin’s public-goods stack — across wallets, privacy, infrastructure, education, and open-source tools worldwide.</p>
   <div class="hero-stats">
     <div class="hero-stat"><span class="num">297</span><span class="label">Grants</span></div>
     <div class="hero-stat"><span class="num">23</span><span class="label">Rounds</span></div>
+    <div class="hero-stat"><span class="num">242</span><span class="label">Recipients</span></div>
     <div class="hero-stat"><span class="num">55+</span><span class="label">Countries</span></div>
   </div>
   <div class="scroll-hint">
@@ -394,13 +433,33 @@ footer a{color:var(--orange);text-decoration:none}
   <div class="explorer-stats" id="explorer-stats" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem;text-align:center">
   </div>
 
+  <div class="selection-summary" id="selection-summary"></div>
+
+  <div class="global-module" id="global-module">
+    <div class="global-card">
+      <div class="global-kicker">Beyond the map</div>
+      <h4>Global and cross-regional work is a major part of the portfolio</h4>
+      <p id="global-summary"></p>
+      <div class="global-metrics" id="global-metrics"></div>
+    </div>
+    <div class="global-card">
+      <div class="global-kicker">Why it matters</div>
+      <h4>Not all Bitcoin public goods belong to a single place</h4>
+      <p>Core infrastructure, wallets, privacy tools, translations, and remote fellowships often serve users across borders. That work should stay visible in the explorer even when it should not appear as a fake dot on the map.</p>
+    </div>
+  </div>
+
+  <div class="featured-grants" id="featured-grants"></div>
+
   <div class="explorer-grid">
     <div class="explorer-chart">
       <h3>Category Mix of Current Selection</h3>
+      <p class="chart-note">What kinds of work dominate this filtered slice of the portfolio? This chart shows the category breakdown of the grants you are currently looking at.</p>
       <svg id="chart-cat" width="100%" height="320"></svg>
     </div>
     <div class="explorer-chart">
       <h3>Rounds in Current Selection</h3>
+      <p class="chart-note">When did this slice of the portfolio happen? This chart shows how the current selection is distributed across funding rounds over time.</p>
       <svg id="chart-rounds" width="100%" height="280"></svg>
     </div>
   </div>
@@ -865,6 +924,78 @@ function initExplorer(){
   applyFilters();
 }
 
+function summarizeSelection(filtered){
+  const parts = [];
+  if (activeRegion) parts.push(`<strong>${activeRegion}</strong>`);
+  else parts.push('<strong>all regions</strong>');
+  if (activeCat) parts.push(`<strong>${CAT_LABELS[activeCat] || activeCat}</strong>`);
+  else parts.push('<strong>all categories</strong>');
+
+  const mapped = filtered.filter(g => g.lat != null && g.lng != null).length;
+  const globalCount = filtered.filter(g => g.lat == null || g.lng == null).length;
+  return `Showing ${filtered.length} grants across ${parts.join(' × ')}. <strong>${mapped}</strong> have precise mappable locations; <strong>${globalCount}</strong> are global or cross-regional and stay in the explorer instead of being forced onto the map.`;
+}
+
+function renderFeaturedGrants(filtered){
+  const container = document.getElementById('featured-grants');
+  if (!container) return;
+
+  const scored = filtered.map(g => ({
+    ...g,
+    _score: (g.lat != null && g.lng != null ? 5 : 0) + (g.desc ? Math.min(g.desc.length / 80, 3) : 0) + (g.reg && g.reg !== 'Global' ? 1 : 0)
+  })).sort((a,b) => b._score - a._score || a.rn - b.rn);
+
+  const picks = [];
+  const seenCats = new Set();
+  for (const g of scored) {
+    if (picks.length >= 3) break;
+    if (seenCats.has(g.cat) && scored.length > 3) continue;
+    picks.push(g);
+    seenCats.add(g.cat);
+  }
+  for (const g of scored) {
+    if (picks.length >= 3) break;
+    if (!picks.find(x => x.name === g.name && x.proj === g.proj)) picks.push(g);
+  }
+
+  container.innerHTML = picks.map(g => `
+    <article class="featured-card">
+      <div class="featured-kicker">Featured grant in current selection</div>
+      <h4>${g.proj}</h4>
+      <div class="featured-meta">${g.name} · Round ${g.rn} · ${g.reg || 'Region unknown'}${g.loc ? ` · ${g.loc}` : ''}</div>
+      <div class="featured-desc">${g.desc || 'No description available.'}</div>
+    </article>
+  `).join('');
+}
+
+function renderGlobalModule(filtered){
+  const globalish = filtered.filter(g => g.lat == null || g.lng == null);
+  const summary = document.getElementById('global-summary');
+  const metrics = document.getElementById('global-metrics');
+  if (!summary || !metrics) return;
+
+  const recipients = new Set(globalish.map(g => g.name)).size;
+  const categories = new Set(globalish.map(g => g.cat)).size;
+  const rounds = new Set(globalish.map(g => g.rn)).size;
+  const topCat = [...d3.rollup(globalish, v=>v.length, d=>d.cat).entries()].sort((a,b)=>b[1]-a[1])[0];
+
+  summary.innerHTML = globalish.length
+    ? `${globalish.length} grants in this selection are best understood as global, remote, or cross-regional. Their most common focus is <strong>${topCat ? (CAT_LABELS[topCat[0]] || topCat[0]) : 'mixed work'}</strong>, which is exactly why pretending they belong to one dot on the map would be misleading.`
+    : `This selection is entirely geographically specific, so every visible grant can be honestly represented on the map.`;
+
+  metrics.innerHTML = [
+    ['Global / non-geographic grants', globalish.length],
+    ['Recipients in that bucket', recipients],
+    ['Categories represented', categories],
+    ['Funding rounds represented', rounds],
+  ].map(([label,val]) => `
+    <div class="global-metric">
+      <span class="value">${val}</span>
+      <span class="label">${label}</span>
+    </div>
+  `).join('');
+}
+
 function applyFilters(){
   let filtered = GRANTS;
   if (activeRegion) filtered = filtered.filter(g => g.reg === activeRegion);
@@ -873,7 +1004,7 @@ function applyFilters(){
   // Update stats bar
   const statsDiv = document.getElementById('explorer-stats');
   const uniqueRecipients = new Set(filtered.map(g=>g.name)).size;
-  const uniqueCountries = new Set(filtered.filter(g=>g.loc && g.loc!=='Global').map(g=>g.loc)).size;
+  const uniqueCountries = new Set(filtered.filter(g=>g.lat != null && g.lng != null).map(g=>g.loc)).size;
   const uniqueCategories = new Set(filtered.map(g=>g.cat)).size;
   statsDiv.innerHTML = [
     ['Grants', filtered.length, 'var(--orange)'],
@@ -886,6 +1017,12 @@ function applyFilters(){
       <div style="font-size:.8rem;color:var(--muted)">${label}</div>
     </div>
   `).join('');
+
+  const selectionSummary = document.getElementById('selection-summary');
+  if (selectionSummary) selectionSummary.innerHTML = summarizeSelection(filtered);
+
+  renderGlobalModule(filtered);
+  renderFeaturedGrants(filtered);
 
   // Table
   const tbody = document.getElementById('table-body');
