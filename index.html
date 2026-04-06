@@ -1032,32 +1032,19 @@ function renderFeaturedGrants(filtered){
   `).join('');
 }
 
-function renderGlobalModule(filtered){
-  const globalish = filtered.filter(g => g.lat == null || g.lng == null);
-  const summary = document.getElementById('global-summary');
-  const metrics = document.getElementById('global-metrics');
-  if (!summary || !metrics) return;
+function renderContextCopy(filtered){
+  const container = document.getElementById('context-copy');
+  if (!container) return;
 
-  const recipients = new Set(globalish.map(g => g.name)).size;
-  const categories = new Set(globalish.map(g => g.cat)).size;
-  const rounds = new Set(globalish.map(g => g.rn)).size;
-  const topCat = [...d3.rollup(globalish, v=>v.length, d=>d.cat).entries()].sort((a,b)=>b[1]-a[1])[0];
+  const mapped = filtered.filter(g => g.lat != null && g.lng != null).length;
+  const globalish = filtered.filter(g => g.lat == null || g.lng == null).length;
+  const recipients = new Set(filtered.map(g => g.name)).size;
 
-  summary.innerHTML = globalish.length
-    ? `${globalish.length} grants in this selection are best understood as global, remote, or cross-regional. Their most common focus is <strong>${topCat ? (CAT_LABELS[topCat[0]] || topCat[0]) : 'mixed work'}</strong>, which is exactly why pretending they belong to one dot on the map would be misleading.`
-    : `This selection is entirely geographically specific, so every visible grant can be honestly represented on the map.`;
-
-  metrics.innerHTML = [
-    ['Global / non-geographic grants', globalish.length],
-    ['Recipients in that bucket', recipients],
-    ['Categories represented', categories],
-    ['Funding rounds represented', rounds],
-  ].map(([label,val]) => `
-    <div class="global-metric">
-      <span class="value">${val}</span>
-      <span class="label">${label}</span>
-    </div>
-  `).join('');
+  container.innerHTML = `
+    <h3>What the map is showing</h3>
+    <p><strong>${mapped}</strong> grants in this view have clear geographic anchors. <strong>${globalish}</strong> are broader, distributed, or remote, so the map stays honest instead of pretending every grant belongs to one precise dot.</p>
+    <p>This selection spans <strong>${recipients}</strong> recipients. Read it as a builder network, not just a pile of pins.</p>
+  `;
 }
 
 function applyFilters(){
@@ -1085,7 +1072,7 @@ function applyFilters(){
   const selectionSummary = document.getElementById('selection-summary');
   if (selectionSummary) selectionSummary.innerHTML = summarizeSelection(filtered);
 
-  renderGlobalModule(filtered);
+  renderContextCopy(filtered);
   renderFeaturedGrants(filtered);
 
   // Table
