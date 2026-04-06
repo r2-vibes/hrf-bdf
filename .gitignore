@@ -1,0 +1,8 @@
+*.png
+*.jpg
+build.py
+gen_data.py
+v1-backup.html
+v2-failed.html
+world-110m.json
+world-mini.json
