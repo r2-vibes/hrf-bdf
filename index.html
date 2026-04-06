@@ -242,14 +242,6 @@ body{font-family:var(--font-text);background:var(--bg);color:var(--text);line-he
 .selection-summary{
   color:var(--muted);font-size:.9rem;line-height:1.6;margin:-1rem 0 1.75rem;
 }
-.context-copy p{
-  color:var(--body);font-size:.9rem;line-height:1.6;
-}
-.context-copy{
-  background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.15rem;margin-bottom:2rem;
-}
-.context-copy h3{font-size:1rem;margin-bottom:.55rem;}
-.context-copy p + p{margin-top:.7rem;}
 .grant-table-wrap{
   background:var(--card);border:1px solid var(--border);
   border-radius:12px;overflow:hidden;
@@ -1036,21 +1028,6 @@ function summarizeSelection(filtered){
   return `Showing ${filtered.length} grants across ${parts.join(' × ')}. <strong>${geographicallySpecific}</strong> are tagged to a specific geography; <strong>${broaderScope}</strong> are global, cross-border, or not tied to one place in the source data.`;
 }
 
-function renderContextCopy(filtered){
-  const container = document.getElementById('context-copy');
-  if (!container) return;
-
-  const geographicallySpecific = filtered.filter(g => g.loc && g.loc !== 'Global').length;
-  const broaderScope = filtered.filter(g => !g.loc || g.loc === 'Global').length;
-  const recipients = new Set(filtered.map(g => g.name)).size;
-
-  container.innerHTML = `
-    <h3>What the map is showing</h3>
-    <p><strong>${geographicallySpecific}</strong> grants in this view are tagged to a specific place. <strong>${broaderScope}</strong> are global, cross-border, or not tied to one geography in the source data.</p>
-    <p>This selection spans <strong>${recipients}</strong> recipients. Read it as a builder network, not just a pile of pins.</p>
-  `;
-}
-
 function applyFilters(){
   let filtered = GRANTS;
   if (activeRegion) filtered = filtered.filter(g => g.reg === activeRegion);
@@ -1076,8 +1053,6 @@ function applyFilters(){
   const selectionSummary = document.getElementById('selection-summary');
   if (selectionSummary) selectionSummary.innerHTML = summarizeSelection(filtered);
 
-  renderContextCopy(filtered);
-
   // Table
   const tbody = document.getElementById('table-body');
   tbody.innerHTML = filtered.map(g => `
@@ -1102,13 +1077,25 @@ function applyFilters(){
       let match = true;
       if (activeRegion && d.reg !== activeRegion) match = false;
       if (activeCat && d.cat !== activeCat) match = false;
-      return match ? 1 : 0.16;
+      return match ? 1 : 0.22;
     })
     .attr('r', d => {
       let match = true;
       if (activeRegion && d.reg !== activeRegion) match = false;
       if (activeCat && d.cat !== activeCat) match = false;
-      return match ? 4.8 : 2.5;
+      return match ? 5.4 : 2.9;
+    })
+    .attr('stroke', d => {
+      let match = true;
+      if (activeRegion && d.reg !== activeRegion) match = false;
+      if (activeCat && d.cat !== activeCat) match = false;
+      return match ? 'rgba(255,210,122,.8)' : 'rgba(255,210,122,.28)';
+    })
+    .attr('stroke-width', d => {
+      let match = true;
+      if (activeRegion && d.reg !== activeRegion) match = false;
+      if (activeCat && d.cat !== activeCat) match = false;
+      return match ? 1.25 : 0.8;
     });
 }
 
