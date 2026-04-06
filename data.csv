@@ -1,0 +1,298 @@
+round_date,round_number,total_round_amount_usd,total_round_amount_sats,recipient_name,grant_amount_usd,grant_amount_sats,project_name,project_description,category,country_or_region
+2020-06-01,1,,,Chris Belcher,,,CoinSwap,Technique to defeat state and corporate financial surveillance,privacy,UK
+2020-08-01,2,,,Evan Kaloudis,1 BTC,,Zeus,iOS and Android app for Lightning node control,lightning,
+2020-08-01,2,,,Fontaine,1 BTC,,Fully Noded,Open source iOS app to interact with Bitcoin Node,wallet,
+2020-08-01,2,,,Openoms,1 BTC,,JoinInbox,Graphical user interface for JoinMarket,privacy,
+2020-12-01,3,"$50,000",,Gloria Zhao,"$50,000",,Package Mempool Accept (at Brink),Bitcoin Core work on package relay to improve Lightning Network usability,core,USA
+2021-01-12,4,"$50,000",,Ben Kaufman,"$25,000",,Specter Desktop,Enhanced UI for Bitcoin Core - full node management and hardware wallet support,wallet,Global
+2021-01-12,4,"$50,000",,Global Mesh Labs (Richard Myers / Fodé Diop / Will Clark),"$25,000",,Lot49,Android messaging app adapting Bitcoin/Lightning for low-bandwidth off-grid use,infrastructure,Senegal
+2021-03-02,5,$10000,,Blockchain Commons,$10000,,Bitcoin Internships,Bitcoin-focused internships for university students,education,US
+2021-03-02,5,$10000,,Janine Roem,$10000,,Bitcoin Privacy Newsletter,Monthly roundup of news related to privacy in Bitcoin,education,
+2021-03-02,5,$25000,,Jesse Posner,$25000,,Adapter Signatures & DLC,Work on adapter signatures and discrete log contracts,scaling,US
+2021-03-02,5,$25000,,Muun team,$25000,,Muun Wallet,Open source bitcoin and lightning wallet,wallet,Argentina
+2021-05-31,6,$210000,,Abubakar Nur Khalil,$50000,,Bitcoin Wallet Development,Bitcoin wallet software for Nigerian context,wallet,Nigeria
+2021-05-31,6,$210000,,Arabic_HODL,$10000,,Arabic Bitcoin Education,Translate Bitcoin educational content into Arabic,education,
+2021-05-31,6,$210000,,Breez,$25000,,Lightning Privacy Features,Add privacy features to Lightning ecosystem,lightning,
+2021-05-31,6,$210000,,Calvin Kim,$50000,,Utreexo,Project to dramatically increase speed of deploying Bitcoin nodes,scaling,
+2021-05-31,6,$210000,,Dhruv Mehta,$50000,,BIP324 & Security,Work on increasing Bitcoin's censorship-resistance and security,security,
+2021-05-31,6,$210000,,Sphinx,$25000,,Lightning Privacy Tools,Improve Lightning Network usability for activists,lightning,
+2021-09-15,7,,$375M sats,Abubakar Nur Khalil,$50M sats,,Qala fellowship,Program to grow Nigerian Bitcoin developer talent,education,Nigeria
+2021-09-15,7,,$375M sats,BTCPay,$25M sats,,Design Guide,Open-source design guide for merchant Bitcoin onboarding,design,
+2021-09-15,7,,$375M sats,Bernard Parah,$50M sats,,Qala fellowship,Program to grow Nigerian Bitcoin developer talent,education,Nigeria
+2021-09-15,7,,$375M sats,Carla Kirk-Cohen,$50M sats,,Qala fellowship,Program to grow Nigerian Bitcoin developer talent,education,Nigeria
+2021-09-15,7,,$375M sats,Chaincase,$25M sats,,iOS Privacy Wallet,iOS Bitcoin wallet with CoinJoin coin control and Tor,wallet,
+2021-09-15,7,,$375M sats,Fanquake (Michael Ford),$50M sats,,Bitcoin Core Maintenance,Maintaining Bitcoin Core ensuring efficient and bug-free operation,core,
+2021-09-15,7,,$375M sats,Fodé Diop,$50M sats,,Bitcoin Developers Academy,Bitcoin programming course targeting West Africa,education,Senegal
+2021-09-15,7,,$375M sats,LNBits,$25M sats,,Lightning Wallet,Open-source Lightning wallet with LNURL integration,lightning,
+2021-09-15,7,,$375M sats,Lili and Richard Myers,$25M sats,,Low-bandwidth Research,Research on Bitcoin in hostile/low-bandwidth environments,research,
+2021-09-15,7,,$375M sats,SeedSigner,$25M sats,,Hardware Wallet,Inexpensive open-source hardware wallets using Raspberry Pi,hardware,
+2021-09-15,7,,$375M sats,Tim Akinbo,$50M sats,,Qala fellowship,Program to grow Nigerian Bitcoin developer talent,education,Nigeria
+2021-09-15,7,,$375M sats,Umbrel JoinMarket bounty,$25M sats,,JoinMarket App,Bounty for JoinMarket app on Umbrel platform,privacy,
+2021-09-15,7,,$375M sats,Vasil Dimov,$50M sats,,Bitcoin Core CJDNS,Implement CJDNS support to improve network security and privacy,core,
+2022-04-26,8,,$500M sats,Africa Bitcoin Conference,$100M sats,,Conference,First major Bitcoin event in Africa since 2019,conference,Ghana
+2022-04-26,8,,$500M sats,Bitcoin Pakistan,$25M sats,,Urdu Translation,Translate Bitcoin resources into Urdu,education,Pakistan
+2022-04-26,8,,$500M sats,Democratic Voice of Burma,$50M sats,,Media Coverage,Burmese media outlet Bitcoin coverage,education,Burma
+2022-04-26,8,,$500M sats,Dhruv Mehta,$50M sats,,Spacechains,Bitcoin sidechains for dollar assets and enhanced privacy,scaling,
+2022-04-26,8,,$500M sats,El Toque,$50M sats,,Media Coverage,Cuban media outlet Bitcoin coverage,education,Cuba
+2022-04-26,8,,$500M sats,Francisco Calderon,$50M sats,,lnp2pbot,Peer-to-peer Telegram bot for Lightning trading,lightning,Venezuela
+2022-04-26,8,,$500M sats,Netblocks,$50M sats,,Research,Study impact of government restrictions on Bitcoin protocol,research,
+2022-04-26,8,,$500M sats,Paulo Sacramento,$25M sats,,Bitcoin Design Guide,Update Bitcoin Design Guide for better UX,design,
+2022-04-26,8,,$500M sats,Rene Pickhardt,$50M sats,,Lightning Research,Research to make Lightning payment process more reliable,lightning,
+2022-04-26,8,,$500M sats,Ruben Somsen,$50M sats,,Spacechains,Bitcoin sidechains for dollar assets and enhanced privacy,scaling,
+2022-04-26,8,,$500M sats,The Daily Maverick,$50M sats,,Media Coverage,South African media outlet Bitcoin coverage,education,South Africa
+2022-09-06,9,$325000,,BTCPay,$100000,,Payment Processor,Free and open source Bitcoin payment processor,payments,
+2022-09-06,9,$325000,,Jon Atack,$50000,,Bitcoin Core,Bitcoin Core developer for code review and testing,core,
+2022-09-06,9,$325000,,Josh Kitman,$50000,,Fedimint,Chaumian e-cash solution for Bitcoin privacy and scalability,ecash,
+2022-09-06,9,$325000,,Keith Mukai,$25000,,SeedSigner,Lead dev for SeedSigner hardware wallet,hardware,
+2022-09-06,9,$325000,,Leigh Cuen,$25000,,Donation Guide,Bitcoin donation guide for nonprofits and activists,education,
+2022-09-06,9,$325000,,Novaya Gazeta Europe,$25000,,Media Coverage,Russian independent news outlet,education,Russia
+2022-09-06,9,$325000,,Robosats,$25000,,P2P Exchange,Open-source private peer-to-peer Lightning exchange,lightning,
+2022-09-06,9,$325000,,Vinteum,$25000,,Latin America Development,Bitcoin research and development center for Latin America,education,Brazil
+2022-12-20,10,$325000,,Africa Bitcoin Conference,$15000,,Conference Support,Travel grants for Africa Bitcoin Conference,conference,Ghana
+2022-12-20,10,$325000,,Bitcoin Magazine Ukraine,$25000,,Ukraine Meetups,Support Bitcoin meetups in Kiev during war,community,Ukraine
+2022-12-20,10,$325000,,Bitcoin Mountain,$25000,,Cameroon Communities,Building Bitcoin circular communities in Cameroon,community,Cameroon
+2022-12-20,10,$325000,,Bitcoin4India,$25000,,Community Building,Grassroots community building and education in India,community,India
+2022-12-20,10,$325000,,Dusty,$25000,,Lightning Splicing,Work on Lightning Splicing for better UX,lightning,
+2022-12-20,10,$325000,,Furszy,$50000,,Bitcoin Core,Bitcoin Core software stability performance and security,core,
+2022-12-20,10,$325000,,Gleb Naumenko,$50000,,Bitcoin Core & Covenants,Bitcoin Core work on security privacy and scalability,core,Ukraine
+2022-12-20,10,$325000,,New Belarus,$25000,,Digital Democracy,Bitcoin-based financial infrastructure for Belarus,community,Belarus
+2022-12-20,10,$325000,,Raseef 22,$25000,,Middle East Media,Independent pan Arab media Bitcoin coverage,education,Middle East
+2022-12-20,10,$325000,,Tor relay operators,$25000,,Network Infrastructure,Support Tor network reliability and performance,infrastructure,
+2022-12-20,10,$325000,,We Are All Satoshi,$25000,,African Youth Program,Identify and train African teenagers for Bitcoin contributions,education,Africa
+2022-12-20,10,$325000,,bitcoin++,$10000,,Developer Conference,Bitcoin developer conference focused on privacy,conference,Mexico
+2023-02-21,11,$475000,$2B sats,Africa Bitcoin Conference,$75000,,Conference,Largest Bitcoin conference on African continent,conference,Africa
+2023-02-21,11,$475000,$2B sats,Bitcoin Myanmar,$25000,,Burma Education,Financial freedom education in Burma,education,Burma
+2023-02-21,11,$475000,$2B sats,Bitcoin for Fairness,$50000,,Education,Bitcoin awareness for disadvantaged communities,education,
+2023-02-21,11,$475000,$2B sats,Ekenimoh Elyan,$25000,,EasePay,Bitcoin micropayment solutions for Nigerian businesses,payments,Nigeria
+2023-02-21,11,$475000,$2B sats,Emmanuel Bronshtein,$25000,,Wallet Scrutiny,Verify security of Bitcoin wallets,security,
+2023-02-21,11,$475000,$2B sats,Exomunia,$25000,,African Translation,Bitcoin content translation to native African languages,education,Africa
+2023-02-21,11,$475000,$2B sats,Lorban,$50000,,Stratum V2,Protocol to help decentralize Bitcoin mining pools,mining,
+2023-02-21,11,$475000,$2B sats,Qala,$100000,,Developer Fellowship,13-week fellowship for African Bitcoin developers,education,Africa
+2023-02-21,11,$475000,$2B sats,Vasil Dimov,$50000,,Bitcoin Core,Bitcoin Core development and I2P enhancements,core,
+2023-02-21,11,$475000,$2B sats,William Casarin,$50000,,Nostr,Decentralized censorship-resistant social network protocol,nostr,
+2023-05-09,12,$455000,,0xB10C,$50000,,Network Monitoring,Bitcoin Core tracepoints and network monitoring,monitoring,
+2023-05-09,12,$455000,,BOB Space BKK,$25000,,Thailand Residency,Bitcoin-only hatchery and co-working space,community,Thailand
+2023-05-09,12,$455000,,Calle,$50000,,Cashu,Free and open source Chaumian ecash protocol,ecash,
+2023-05-09,12,$455000,,Calvin Kim,$100000,,Utreexo,Bitcoin scaling solution for faster node verification,scaling,
+2023-05-09,12,$455000,,Charlene Fadirepo,$10000,,Bitcoin in Africa Show,Podcast for Bitcoin education across Africa,education,Africa
+2023-05-09,12,$455000,,Hampus Sjöberg,$25000,,Blixt Wallet,Non-custodial Bitcoin and Lightning wallet,wallet,
+2023-05-09,12,$455000,,Kieran,$50000,,Snort.Social,Web client for Nostr decentralized social network,nostr,
+2023-05-09,12,$455000,,Lorraine Marcel,$10000,,Bitcoin DADA,Women-centric Bitcoin education for African women,education,Kenya
+2023-05-09,12,$455000,,Meron Estefanos,$50000,,Uganda Innovation Hub,Bitcoin awareness and learning center in Uganda,education,Uganda
+2023-05-09,12,$455000,,Nourou,$10000,,Bitcoin Sénégal,Meetups and merchant onboarding in Senegal,community,Senegal
+2023-05-09,12,$455000,,Rootzoll,$50000,,Raspiblitz,DIY Lightning node on Raspberry Pi,lightning,
+2023-05-09,12,$455000,,World Liberty Congress,$25000,,Freedom Academy,Training program for activists against authoritarianism,education,
+2023-09-26,13,$505000,,Amiti Uttarwar,$25000,,Bitcoin Mentorship,Bitcoin Core mentorship and education,education,
+2023-09-26,13,$505000,,Ben Perrin,$25000,,Bitcoin Education,International Bitcoin education for dissidents,education,
+2023-09-26,13,$505000,,Bitcoin Ekasi,$25000,,South African Economy,Build circular Bitcoin economy in South Africa,community,South Africa
+2023-09-26,13,$505000,,Bitcoin++ Travel Grant,,,Bitcoin++,Travel grants for Bitcoin developers from difficult political climates,conference,Germany
+2023-09-26,13,$505000,,D++,$25000,,International Education,Bitcoin education and FOSS project maintenance,education,
+2023-09-26,13,$505000,,Furszy,$50000,,Bitcoin Core,Top 10 Bitcoin Core contributor,core,
+2023-09-26,13,$505000,,Gee Deer,$50000,,Lightning Stablecoins,Lightning native stablecoins using DLCs,lightning,
+2023-09-26,13,$505000,,Jarol Rodriguez,$50000,,Bitcoin Core,Bitcoin Core development and mobile node support,core,
+2023-09-26,13,$505000,,Justin Moeller,$50000,,Fedimint,Database migration and performance for Fedimint,ecash,
+2023-09-26,13,$505000,,Kawaakibi Foundation,$50000,,MENA Bitcoin Hub,Bitcoin education for activists in MENA region,education,Middle East
+2023-09-26,13,$505000,,La Librería de Satoshi,$25000,,Spanish Education,Technical Bitcoin education for Spanish speakers,education,
+2023-09-26,13,$505000,,Satsconf Travel Grant,,,Satsconf,Travel grants for Bitcoin developers from difficult political climates,conference,Brazil
+2023-09-26,13,$505000,,Summer of Bitcoin,$50000,,Fellowship Program,Global summer internship for Bitcoin development,education,
+2023-09-26,13,$505000,,TabConf Travel Grant,,,TabConf,Travel grants for Bitcoin developers from difficult political climates,conference,USA
+2023-09-26,13,$505000,,Vinteum,$50000,,Latin America Development,Expand Bitcoin Core development in Latin America,education,Brazil
+2023-12-19,14,$500000,,Arabic Hodl,,,Arabic Bitcoin Education,Making Bitcoin accessible to more than 400 million Arabic-speaking people worldwide,education,Middle East
+2023-12-19,14,$500000,,Area Bitcoin,,,Bitcoin Education,Expanding free Bitcoin educational content across multiple languages,education,Brazil
+2023-12-19,14,$500000,,Berta Valle,,,Nicaragua Education,Bitcoin educational work in Nicaragua for human rights defenders,education,Nicaragua
+2023-12-19,14,$500000,,Bitcoin Atlantis,,,Conference,Bitcoin conference in Madeira Portugal,conference,Portugal
+2023-12-19,14,$500000,,Bitcoin Deepa,,,Sri Lanka Community,Expanding the Sri Lankan Bitcoin community,community,Sri Lanka
+2023-12-19,14,$500000,,Bitshala,,,Bitcoin Development Education,Education initiative providing guidance and resources to developers entering Bitcoin,education,India
+2023-12-19,14,$500000,,Exonumia,,,African Language Translation,Translating Bitcoin educational content into native African languages,education,Africa
+2023-12-19,14,$500000,,Groundswell,,,Refugee Education,Free Bitcoin education to diaspora and exile communities in the UK,education,UK
+2023-12-19,14,$500000,,Hack.BS,,,Cypherpunk Hackerspace,Nonprofit association opening a cypherpunk hackerspace,community,Italy
+2023-12-19,14,$500000,,John Carlson,,,Bitcoin Core App,Updating and improving the Bitcoin Core App project for mobile phones,core,Global
+2023-12-19,14,$500000,,Kulpreet Singh,,,Braidpool,Peer-to-peer mining pool designed to enhance Bitcoin's censorship resistance,mining,Global
+2023-12-19,14,$500000,,L0la L33tz,,,Bitcoin Privacy Guide,Creating a Bitcoin privacy guide for beginners and activists,education,Global
+2023-12-19,14,$500000,,Lorban,,,Stratum V2,Upgrade on the current protocol Bitcoin miners use to communicate with pools,mining,Global
+2023-12-19,14,$500000,,Mi Primer Bitcoin,,,Mi Primer Bitcoin,Nonprofit organization providing open-source Bitcoin education in Central America,education,Central America
+2023-12-19,14,$500000,,Mostro,,,Mostro,Decentralized peer-to-peer Bitcoin exchange built on top of Nostr,payments,Venezuela
+2023-12-19,14,$500000,,Netblocks,,,Internet Freedom Monitoring,Monitor and report Internet restrictions and shutdowns globally,infrastructure,Global
+2023-12-19,14,$500000,,SeedSigner,,,Hardware Wallet,DIY bitcoin signing device that anyone can build,wallet,Global
+2023-12-19,14,$500000,,bitcoin++,,,Developer Conference,Developer-focused conference series around the world,conference,Global
+2024-03-19,15,$500000,,BOB Builders Residency,,,FOSS Development,In-person residency for FOSS developers in Thailand,community,Thailand
+2024-03-19,15,$500000,,BTCPay Server,,,Payment Processor,Free open-source self-hosted payment solution for Bitcoin payments,payments,Global
+2024-03-19,15,$500000,,Bitcoin DADA,,,Women's Education,Non-profit initiative empowering African women through Bitcoin education,education,Africa
+2024-03-19,15,$500000,,Bitcoin Design Foundation,,,UX Design,Supporting Bitcoin Design Community with design infrastructure and resources,design,Global
+2024-03-19,15,$500000,,Bitcoin Innovation Hub,,,Uganda Community,Physical space promoting Bitcoin adoption for refugees and vulnerable communities,community,Uganda
+2024-03-19,15,$500000,,Bitcoin Op-Tech,,,Technical Newsletter,Technical Bitcoin newsletter for developers businesses and organizations,education,Global
+2024-03-19,15,$500000,,Bitcoin Policy Summit 2024,,,Conference,One-day conference bringing together policymakers and industry leaders,conference,Global
+2024-03-19,15,$500000,,Calle,,,USD E-Cash for Bitcoin,USD-based Chaumian e-cash system built on the Cashu protocol,ecash,Global
+2024-03-19,15,$500000,,Damus Android,,,Nostr Client,Communications application using the nostr protocol for Android devices,nostr,Global
+2024-03-19,15,$500000,,LNbits,,,Lightning Wallet,Multi-user and account system for the Lightning Network,lightning,Global
+2024-03-19,15,$500000,,Pablo Martin,,,Bitcoin Core Development,Bitcoin Core developer contributing to security and functionality,core,Global
+2024-03-19,15,$500000,,Paco de la India,,,Indian Education,Bitcoin for Billions video series in four regional languages,education,India
+2024-03-19,15,$500000,,Scalar School,,,Lightning Development,Bitcoin and Lightning development program for early-stage developers,education,Brazil
+2024-03-19,15,$500000,,Yibaochina.com,,,Chinese Education,News platform serving Chinese scholars and promoting Bitcoin education,education,China
+2024-06-05,16,,$1B sats,Bitcoin Seoul,,$1B sats,Conference,Bitcoin conference in Seoul Korea,conference,South Korea
+2024-06-05,16,,$1B sats,Bitshala,,$1B sats,Internship Program,Grassroots Bitcoin educational initiative from India,education,India
+2024-06-05,16,,$1B sats,Blockchain Commons,,$1B sats,FROST Protocol,Supporting FROST security protocol development,security,
+2024-06-05,16,,$1B sats,Building Bridges to Bitcoin,,$1B sats,MENA Education,Educational initiative in Arabic for Middle East and North Africa,education,Middle East
+2024-06-05,16,,$1B sats,Flash,,$1B sats,Caribbean Wallet,Nostr-enabled Lightning wallet for Caribbean,wallet,Caribbean
+2024-06-05,16,,$1B sats,Margot Paez,,$1B sats,Mining Research,Research on Bitcoin mining human rights and sovereignty,research,
+2024-06-05,16,,$1B sats,OpenSats,,$1B sats,Funding Organization,Public charity funding open-source Bitcoin projects,funding,
+2024-06-05,16,,$1B sats,Paulo Sacramento,,$1B sats,UX Research,Bitcoin UX designer researching adoption patterns,design,Brazil
+2024-06-05,16,,$1B sats,RoboSats,,$1B sats,P2P Exchange,Tor-only KYC-free Bitcoin trading platform,lightning,
+2024-06-05,16,,$1B sats,Summer of Bitcoin,,$1B sats,Internship Program,Global internship program for Bitcoin development,education,
+2024-06-05,16,,$1B sats,Terry Yiu,,$1B sats,Nostr Development,Software engineer working on Nostr projects,nostr,
+2024-06-05,16,,$1B sats,The Core,,$1B sats,Kenya Education,Non-profit Bitcoin educational platform in Kenya,education,Kenya
+2024-06-05,16,,$1B sats,Validating Lightning Signer,,$1B sats,Lightning Security,Enhanced Lightning Network security project,lightning,
+2024-09-05,17,,$1B sats,African Bitcoiners,,$1B sats,Bitcoin Education,Community for onboarding Africans to Bitcoin,community,Africa
+2024-09-05,17,,$1B sats,BTC Shule,,$1B sats,Burundi Education,Bitcoin education for Burundians under authoritarian regime,education,Burundi
+2024-09-05,17,,$1B sats,Baltic Honeybadger,,$1B sats,Conference,World's first non-profit Bitcoin-only conference,conference,
+2024-09-05,17,,$1B sats,Bitcoin Indonesia,,$1B sats,Indonesia Education,Bitcoin education platform in Bahasa Indonesia,education,Indonesia
+2024-09-05,17,,$1B sats,Bitcoin++ Conference,,$1B sats,Developer Conference,Bitcoin developer conference with long-form education,conference,
+2024-09-05,17,,$1B sats,Coracle,,$1B sats,Nostr Client,Nostr web client for censorship-resistant social media,nostr,
+2024-09-05,17,,$1B sats,Descentralizar,,$1B sats,Conference,One-day Bitcoin conference in Argentina,conference,Argentina
+2024-09-05,17,,$1B sats,EttaWallet,,$1B sats,Lightning Wallet,Open-source self-custodial mobile Lightning wallet,wallet,Africa
+2024-09-05,17,,$1B sats,Harbor,,$1B sats,Ecash Wallet,Open-source ecash wallet for Bitcoin privacy,ecash,
+2024-09-05,17,,$1B sats,Jeff Gardner,,$1B sats,Nostr Encryption,End-to-end encryption for Nostr messages,nostr,
+2024-09-05,17,,$1B sats,Kiveclair,,$1B sats,Congo Education,Bitcoin education in Democratic Republic of Congo,education,Congo
+2024-09-05,17,,$1B sats,LaBitconf,,$1B sats,Conference,Longest-running Bitcoin conference in Latin America,conference,Argentina
+2024-09-05,17,,$1B sats,Rikto Xonghoti,,$1B sats,Assam Education,Bitcoin education in Assamese language in India,education,India
+2024-09-05,17,,$1B sats,Satsconf,,$1B sats,Conference,Largest Bitcoin-only conference in South America,conference,Brazil
+2024-09-05,17,,$1B sats,Silentium,,$1B sats,Silent Payments,Self-custodial Bitcoin wallet with Silent Payments,wallet,
+2024-09-05,17,,$1B sats,Solidarity Summit,,$1B sats,Conference,Event supporting political prisoners with financial freedom component,conference,Austria
+2024-09-05,17,,$1B sats,Stratospher,,$1B sats,Bitcoin Core Privacy,Bitcoin Core development for privacy and decentralization,core,
+2024-09-05,17,,$1B sats,TABConf,,$1B sats,Developer Conference,Bitcoin conference for protocol developers,conference,US
+2024-09-05,17,,$1B sats,The 256 Foundation,,$1B sats,Bitaxe Mining,Making Bitcoin mining free and open with Bitaxe,mining,
+2024-09-05,17,,$1B sats,Tor relay operators,,$1B sats,Network Infrastructure,Support Tor network reliability,infrastructure,
+2024-09-05,17,,$1B sats,Yes Bitcoin Haiti,,$1B sats,Haiti Education,Empower Haitians with Bitcoin education,education,Haiti
+2024-12-10,18,,700M sats,Ace / SeedSigner,,,SeedSigner Multi-language,Multi-language translation for SeedSigner hardware wallet,wallet,Global
+2024-12-10,18,,700M sats,Daniela Brozzoni,,,Bitcoin Core Development,Software developer shifting focus to Bitcoin Core PRs and testing,core,Global
+2024-12-10,18,,700M sats,Fontaine / Unify,,,Unify,Payjoin wallet using Nostr and Bitcoin Core for private transactions,privacy,Global
+2024-12-10,18,,700M sats,Gandlaf21 / Cashu-ts,,,Cashu-ts,Primary SDK in Cashu ecosystem simplifying wallet creation,ecash,Global
+2024-12-10,18,,700M sats,Jon Atack,,,Bitcoin Core Development,Top all-time Bitcoin Core contributor and BIP editor,core,Global
+2024-12-10,18,,700M sats,Jorge Jraissati,,,Financial Freedom Policy Coalition,Policy coalition promoting economic opportunities under authoritarian regimes,community,Venezuela
+2024-12-10,18,,700M sats,Lea Petrasova / Vexl,,,Vexl,P2P KYC-free Bitcoin trading app via phone contacts,privacy,Global
+2024-12-10,18,,700M sats,Martti Malmi / Iris,,,Iris,Nostr web client with private secure messaging,nostr,Global
+2024-12-10,18,,700M sats,Michael Haase,,,Bitcoin Core UX/UI Design,Redesign bringing Bitcoin Core App to mobile devices,design,Global
+2024-12-10,18,,700M sats,Mike Schmidt / Brink,,,Brink,Nonprofit supporting Bitcoin protocol engineers with grants and mentorship,funding,Global
+2024-12-10,18,,700M sats,Mogashni Naidoo,,,African UX Bitcoin Bootcamp,UX design training for African Bitcoin designers at Africa Bitcoin Conference,education,Africa
+2024-12-10,18,,700M sats,Naiyoma,,,Bitcoin Core Development,First female Bitcoin Core developer from Africa - PRs and bug fixes,core,Kenya
+2024-12-10,18,,700M sats,No BS Bitcoin,,,No BS Bitcoin,Newsdesk for Bitcoin and open-source tech news - ad-free and paywall-free,community,Global
+2024-12-10,18,,700M sats,Odudex / Krux,,,Krux,Open-source software turning generic devices into hardware wallets,wallet,Global
+2024-12-10,18,,700M sats,Pete Rizzo,,,Bitcoin History,Research project documenting key events and people in Bitcoin history,research,Global
+2024-12-10,18,,700M sats,Public Pool,,,Public Pool,Free open-source mining pool for low hash rate devices,mining,Global
+2024-12-10,18,,700M sats,Sabina Gitau / Tando,,,Tando,Payment app letting Kenyans pay in Bitcoin via Lightning while merchants get KES,payments,Kenya
+2024-12-10,18,,700M sats,Stratum V2 Reference Implementation (SRI),,,Stratum V2 SRI,Open-source software decentralizing Bitcoin mining via own block templates,mining,Global
+2024-12-10,18,,700M sats,Tomatech,,,Tomatech,Developer training community and cultural center for Bitcoin in India,education,India
+2024-12-10,18,,700M sats,Wendy Ding / YakiHonne,,,YakiHonne,Nostr client for free speech and Bitcoin payments across 170 countries,nostr,East Asia
+2025-04-01,19,,$1B sats,Africa Bitcoin Institute,,$1B sats,African Research,Bitcoin research and policy frameworks for Africa,research,Africa
+2025-04-01,19,,$1B sats,BTCPay Server,,$1B sats,Payment Processor,Self-hosted open-source Bitcoin payment processor,payments,
+2025-04-01,19,,$1B sats,BTCenEspañol,,$1B sats,Spanish Education,Spanish-language Bitcoin education across Latin America,education,
+2025-04-01,19,,$1B sats,Base58,,$1B sats,Educational Games,Bitcoin Live Action Role Play educational workshops,education,
+2025-04-01,19,,$1B sats,Bitcoin Babies,,$1B sats,Infant Nutrition,Combine infant nutrition with Bitcoin financial literacy,education,
+2025-04-01,19,,$1B sats,Bitcoin Core GUI,,$1B sats,User Interface,Modernize Bitcoin Core interface for mobile accessibility,core,
+2025-04-01,19,,$1B sats,Bitcoin Week TalentLand,,$1B sats,Mexico Education,Bitcoin education at Latin America's largest tech event,education,Mexico
+2025-04-01,19,,$1B sats,Bitcoin for Good,,$1B sats,Nonprofit Education,Educational initiative for nonprofits to accept Bitcoin,education,
+2025-04-01,19,,$1B sats,Bitsacco,,$1B sats,Kenya Finance,Reinvent SACCOs using Bitcoin and Fedimints,community,Kenya
+2025-04-01,19,,$1B sats,Cashu KVAC,,$1B sats,Ecash Privacy,Software upgrade for Cashu ecash system,ecash,
+2025-04-01,19,,$1B sats,East Asia Developer Program,,$1B sats,Asian Development,Bitcoin development apprenticeship for East Asia,education,Asia
+2025-04-01,19,,$1B sats,Elsat,,$1B sats,Nostr Development,Nostr developer working on Damus and related projects,nostr,
+2025-04-01,19,,$1B sats,Hashpool,,$1B sats,Mining Pool,Self-hosted mining pool with ecash payouts,mining,
+2025-04-01,19,,$1B sats,NetBlocks,,$1B sats,Internet Freedom,Expose digital crackdowns and internet shutdowns,infrastructure,
+2025-04-01,19,,$1B sats,Nonprofit Adoption Research,,$1B sats,Research,Research on nonprofit Bitcoin adoption under dictatorships,research,
+2025-04-01,19,,$1B sats,Relay Wizard,,$1B sats,Nostr Infrastructure,Tool to simplify Nostr relay setup,nostr,
+2025-04-01,19,,$1B sats,Rkrux,,$1B sats,Bitcoin Core,Bitcoin Core developer for code review and testing,core,
+2025-04-01,19,,$1B sats,Self-Custody Research,,$1B sats,Research,Research on self-custodial Bitcoin limitations and solutions,research,
+2025-04-01,19,,$1B sats,Stable Channels,,$1B sats,Lightning Stability,Bitcoin-backed stable balances on Lightning Network,lightning,
+2025-04-01,19,,$1B sats,The Core,,$1B sats,African Education,Bitcoin education platform for Africa,education,Kenya
+2025-04-01,19,,$1B sats,TollGate,,$1B sats,Decentralized ISP,Software to turn WiFi routers into permissionless ISPs,infrastructure,
+2025-04-01,19,,$1B sats,Vinteum,,$1B sats,Latin America Development,Bitcoin research and development center for Latin America,education,Brazil
+2025-04-01,19,,$1B sats,Waye,,$1B sats,Developer Support,Psycho-social support for freedom tech developers,community,
+2025-05-15,20,,800M sats,256 Foundation / EmberOne,,,EmberOne,Open-source modular mining hardware accessible to anyone,mining,Global
+2025-05-15,20,,800M sats,Adi Shankara / Summer of Bitcoin,,,Summer of Bitcoin,Connecting university students from 74 countries with Bitcoin projects,education,Global
+2025-05-15,20,,800M sats,Anjan Sundaram / Stringer News,,,Stringer News,Open media platform using Bitcoin and nostr for censorship-resistant publishing,community,Global
+2025-05-15,20,,800M sats,Anti-Corruption Foundation / Prices Today,,,Prices Today,Tracking rising prices in Russia to expose war's economic toll,research,Russia
+2025-05-15,20,,800M sats,Blockchain Commons / FROST,,,FROST,Protocol strengthening multisig wallets for secure shared custody,security,Global
+2025-05-15,20,,800M sats,Brandon Odiwuor,,,Bitcoin Core Development,Bitcoin Core contributor reviewing code and submitting improvements,core,Global
+2025-05-15,20,,800M sats,Brianna Honkawa d'Estries / Evento,,,Evento,Events platform integrating Bitcoin and nostr for secure organizing,community,Global
+2025-05-15,20,,800M sats,Bryan Bishop (kanzure) / Instamouse,,,Instamouse,Browser-based environment for open-source Bitcoin development,infrastructure,Global
+2025-05-15,20,,800M sats,Catrya / Mostro,,,Mostro,P2P exchange built on nostr protocol for censorship-resistant Bitcoin access,nostr,Global
+2025-05-15,20,,800M sats,Charlene Fairepo / Satoshi Sister Circle,,,Satoshi Sister Circle,Supporting African women pursuing careers in Bitcoin,education,Africa
+2025-05-15,20,,800M sats,Christoph Ono / Bitcoin Design Foundation,,,Bitcoin Design Foundation,Nonprofit funding open-source UX design research for Bitcoin,design,Global
+2025-05-15,20,,800M sats,D++ / Entropy,,,Entropy,Gamified workshops and bootcamps for Bitcoin financial literacy,education,Global
+2025-05-15,20,,800M sats,Erik Cativo,,,Ecash UX Improvement,Making Cashu and Fedimint clients more intuitive and accessible,ecash,Global
+2025-05-15,20,,800M sats,Grant Gombwa / Bitcoin Boma,,,Bitcoin Boma,Bitcoin education for financial resilience in Malawi,education,Malawi
+2025-05-15,20,,800M sats,Keith Mukai / SeedSigner,,,SeedSigner,DIY Bitcoin hardware wallet - language support expansion,wallet,Global
+2025-05-15,20,,800M sats,Kester Ejikeme / Bitcoin Pidgin,,,Bitcoin Pidgin & Bitcoin Anambra,Bitcoin education in Nigerian Pidgin English with circular economy building,education,Nigeria
+2025-05-15,20,,800M sats,Mike Schmidt / Brink,,,Brink,Nonprofit funding and mentoring open-source Bitcoin developers,funding,Global
+2025-05-15,20,,800M sats,Peter Van Valkenburgh / Coin Center,,,Coin Center,Policy research and advocacy defending right to build open digital networks,community,Global
+2025-05-15,20,,800M sats,Students For Liberty,,,Bitcoin Month,Global education campaign teaching youth Bitcoin in 110+ countries,education,Global
+2025-05-15,20,,800M sats,Sudan Hodl / SudaBit,,,SudaBit,Sudan's first private Bitcoin on/off-ramp amid war and hyperinflation,payments,Sudan
+2025-05-15,20,,800M sats,spacebear / Payjoin,,,Payjoin,Privacy technique batching Bitcoin transactions to break chain analysis,privacy,Global
+2025-05-15,20,,800M sats,thunderbiscuit / Padawan Wallet,,,Padawan Wallet,Free open-source mobile app for practicing Bitcoin in risk-free environment,education,Global
+2025-10-28,21,,$1B sats,Africa Free Routing,,$1B sats,Lightning Education,Lightning Developer Bootcamps across Africa,education,Africa
+2025-10-28,21,,$1B sats,BTCPay Server,,$1B sats,Payment Processor,Open-source self-hosted Bitcoin payment solution,payments,Global
+2025-10-28,21,,$1B sats,Bitcoin Famba,,$1B sats,Mozambique Education,Accessible Bitcoin education and circular economies in Mozambique,education,Mozambique
+2025-10-28,21,,$1B sats,Bitcoin Indonesia,,$1B sats,Indonesia Education,Bitcoin education platform in Bahasa Indonesia,education,Indonesia
+2025-10-28,21,,$1B sats,Bitcoin Learning Center,,$1B sats,Thailand Education,Physical Bitcoin education hub in Chiang Mai Thailand,education,Thailand
+2025-10-28,21,,$1B sats,Braidpool,,$1B sats,P2P Mining Pool,Peer-to-peer open-source mining pool design,mining,Global
+2025-10-28,21,,$1B sats,Devgitotox,,$1B sats,Bitcoin Core Development,Tanzanian Bitcoin Core developer contributing to wallet and security,core,Tanzania
+2025-10-28,21,,$1B sats,Learning Bitcoin from Command Line,,$1B sats,Developer Education,Up-to-date resources teaching Bitcoin development,education,Global
+2025-10-28,21,,$1B sats,OMCA,,$1B sats,Conflict Zone Tools,Bitcoin-based tools for conflict-affected and connectivity-constrained environments,infrastructure,Global
+2025-10-28,21,,$1B sats,OpenSats,,$1B sats,Funding Organization,Public nonprofit organization supporting freedom tech projects,funding,Global
+2025-10-28,21,,$1B sats,Programming Lightning,,$1B sats,Lightning Development,Open-source course for building on Lightning Network,education,Global
+2025-10-28,21,,$1B sats,Sovereign Engineering,,$1B sats,Freedom Tech Development,Long-term development program supporting freedom technologists,community,Global
+2025-10-28,21,,$1B sats,Stratospher,,$1B sats,Bitcoin Core Privacy,Bitcoin Core developer strengthening protocol privacy and security,core,Global
+2025-10-28,21,,$1B sats,Stratum V2 Development,,$1B sats,Mining Protocol,Improving Stratum V2 protocol for mining decentralization,mining,Global
+2025-10-28,21,,$1B sats,Threads of Freedom,,$1B sats,Educational App,Graphic novel and learning app explaining Bitcoin for women and girls,education,Afghanistan
+2025-10-28,21,,$1B sats,Validating Lightning Signer,,$1B sats,Lightning Security,Separating key management from Lightning nodes,lightning,Global
+2025-10-28,21,,$1B sats,Vexl,,$1B sats,P2P Trading,Open-source mobile app for peer-to-peer bitcoin trading,payments,Global
+2025-10-28,21,,$1B sats,Voices Uncensored,,$1B sats,Azerbaijan Platform,Bitcoin-based platform for human rights defenders in Azerbaijan,community,Azerbaijan
+2025-10-28,21,,$1B sats,Zapstore,,$1B sats,Decentralized App Store,App store built on Nostr protocol,nostr,Global
+2025-10-28,21,,$1B sats,ngx_l402,,$1B sats,Web Infrastructure,Web server module enabling bitcoin payments for web access,infrastructure,Global
+2025-12-31,22,,$1.3B sats,Africa Free Routing,,$1.3B sats,Lightning Bootcamps,Lightning Developer Bootcamps across Africa,education,Africa
+2025-12-31,22,,$1.3B sats,BTCPay Server,,$1.3B sats,Payment Infrastructure,Self-hosted Bitcoin payment solution for NGOs,payments,Global
+2025-12-31,22,,$1.3B sats,Bitcoin Famba,,$1.3B sats,Mozambique Community,Bitcoin education and circular economies in Mozambique,community,Mozambique
+2025-12-31,22,,$1.3B sats,Bitcoin Indonesia,,$1.3B sats,Indonesia Education,Indonesian Bitcoin education and advocacy,education,Indonesia
+2025-12-31,22,,$1.3B sats,Bitcoin Learning Center,,$1.3B sats,Thailand Education Hub,Physical Bitcoin education center in Chiang Mai,education,Thailand
+2025-12-31,22,,$1.3B sats,Bitika,,$1.3B sats,Kenyan Bitcoin Access,Allowing Kenyans to buy bitcoin directly into Lightning wallets,payments,Kenya
+2025-12-31,22,,$1.3B sats,Bitshala,,$1.3B sats,Indian Development,Bitcoin developer training and hackerspace in India,education,India
+2025-12-31,22,,$1.3B sats,Devgitotox,,$1.3B sats,Bitcoin Core Development,Tanzanian developer contributing to Bitcoin Core,core,Tanzania
+2025-12-31,22,,$1.3B sats,Dhananjay Purohit,,$1.3B sats,Web Bitcoin Payments,Web server module for bitcoin payments,infrastructure,Global
+2025-12-31,22,,$1.3B sats,Learning Bitcoin Command Line,,$1.3B sats,Developer Curriculum,Updated curriculum for Bitcoin development education,education,Global
+2025-12-31,22,,$1.3B sats,Mohd Zaid,,$1.3B sats,Braidpool,Advancing peer-to-peer mining pool design,mining,Global
+2025-12-31,22,,$1.3B sats,OMCA,,$1.3B sats,Conflict Zone Infrastructure,Bitcoin tools for conflict-affected environments,infrastructure,Global
+2025-12-31,22,,$1.3B sats,OpenSats,,$1.3B sats,Nonprofit Operations,Public charity supporting freedom tech development,funding,Global
+2025-12-31,22,,$1.3B sats,Programming Lightning,,$1.3B sats,Lightning Education,Open-source course for Lightning Network development,education,Global
+2025-12-31,22,,$1.3B sats,Roya Mahboob,,$1.3B sats,Afghan Women's Education,Bitcoin education for women and girls under tyranny,education,Afghanistan
+2025-12-31,22,,$1.3B sats,Sovereign Engineering,,$1.3B sats,Freedom Tech Program,Development program for Bitcoin Nostr and ecash technologies,community,Global
+2025-12-31,22,,$1.3B sats,Stratospher,,$1.3B sats,Bitcoin Core Security,South Asian developer strengthening Bitcoin protocol,core,Asia
+2025-12-31,22,,$1.3B sats,Validating Lightning Signer,,$1.3B sats,Lightning Key Management,Lightning Network key management and security,lightning,Global
+2025-12-31,22,,$1.3B sats,Vexl,,$1.3B sats,P2P Bitcoin Trading,Peer-to-peer bitcoin trading without data collection,payments,Global
+2025-12-31,22,,$1.3B sats,Voices Uncensored,,$1.3B sats,Azerbaijan Rights Platform,Bitcoin platform for Azerbaijan human rights defenders,community,Azerbaijan
+2025-12-31,22,,$1.3B sats,Zapstore,,$1.3B sats,Nostr App Store,Decentralized app store built on Nostr protocol,nostr,Global
+2025-12-31,22,,$1.3B sats,bit-aloo,,$1.3B sats,Stratum V2,Software developer improving Stratum V2 for mining decentralization,mining,Global
+2026-04-01,23,,$1.5B sats,AmityAge,,$1.5B sats,Bitcoin Educators Academy,Training local educators to teach financial sovereignty,education,Global
+2026-04-01,23,,$1.5B sats,BTC Shule,,$1.5B sats,Burundi Development,Developer accelerator program for Bitcoin tools in Burundi,education,Burundi
+2026-04-01,23,,$1.5B sats,Base58,,$1.5B sats,Bitcoin Funding Research,Research analyzing funding sources and Bitcoin development independence,research,Global
+2026-04-01,23,,$1.5B sats,Bitcoin Benin,,$1.5B sats,Benin Knowledge Hub,Bitcoin learning center and co-working space in Benin,community,Benin
+2026-04-01,23,,$1.5B sats,Bitcoin House Malaysia,,$1.5B sats,Malaysian Education,Education hub for Bitcoin and open-source technologies,education,Malaysia
+2026-04-01,23,,$1.5B sats,Bitcoin Policy Norway,,$1.5B sats,Norwegian Policy Education,Educating Norwegian policymakers about Bitcoin human rights applications,education,Norway
+2026-04-01,23,,$1.5B sats,Brian Mosha,,$1.5B sats,ChapSmart,Bitcoin application bridging Lightning to M-Pesa for Tanzanians,payments,Tanzania
+2026-04-01,23,,$1.5B sats,Cristy Almonte,,$1.5B sats,LearnNostr,Educational platform for learning Nostr protocol,nostr,Global
+2026-04-01,23,,$1.5B sats,DIYbitcoin,,$1.5B sats,Hardware DIY Guide,Teaching individuals to build Bitcoin hardware with open-source software,education,Global
+2026-04-01,23,,$1.5B sats,Daniel Batten,,$1.5B sats,Bitcoin Regulation Research,Data-driven research on Bitcoin regulation and financial freedom,research,Global
+2026-04-01,23,,$1.5B sats,Easy,,$1.5B sats,SeedSigner Guide,Creating user-friendly setup guide for SeedSigner hardware wallet,wallet,Global
+2026-04-01,23,,$1.5B sats,Groundswell Project,,$1.5B sats,Refugee Bitcoin Education,Bitcoin education for refugees asylum seekers and vulnerable communities,education,Global
+2026-04-01,23,,$1.5B sats,JoinMarket-NG,,$1.5B sats,Privacy Protocol,New implementation of CoinJoin privacy technique,privacy,Global
+2026-04-01,23,,$1.5B sats,Jorge Jraissati,,$1.5B sats,Financial Exclusion Documentation,Documenting cases of dissidents cut off from financial systems,research,Global
+2026-04-01,23,,$1.5B sats,Minmo,,$1.5B sats,P2P Exchange,Connecting users with trusted local agents for fiat-bitcoin exchange,payments,Global
+2026-04-01,23,,$1.5B sats,Naiyoma,,$1.5B sats,Bitcoin Core Privacy,P2P privacy enhancements for Bitcoin Core,core,Global
+2026-04-01,23,,$1.5B sats,NetBlocks,,$1.5B sats,Internet Freedom Observatory,Tracking internet shutdowns and digital repression worldwide,infrastructure,Global
+2026-04-01,23,,$1.5B sats,Nick Anthony,,$1.5B sats,Activist Atlas,Digital platform connecting activists worldwide with freedom tech,community,Global
+2026-04-01,23,,$1.5B sats,Nourou,,$1.5B sats,Banxaas,West African platform for CFA franc to bitcoin exchange,payments,West Africa
+2026-04-01,23,,$1.5B sats,Odudex,,$1.5B sats,Krux,Open-source software transforming devices into Bitcoin signing devices,wallet,Global
+2026-04-01,23,,$1.5B sats,Sabina Waithira Gitau,,$1.5B sats,Tando,Payment app letting Kenyans pay merchants with bitcoin,payments,Kenya
+2026-04-01,23,,$1.5B sats,Summer of Bitcoin,,$1.5B sats,Global Internships,Global internship program for Bitcoin development and design,education,Global
+2026-04-01,23,,$1.5B sats,Tapnob,,$1.5B sats,African Bitcoin Payments,Bitcoin-to-local currency platform across Africa,payments,Africa
+2026-04-01,23,,$1.5B sats,Yes Bitcoin Haiti,,$1.5B sats,Haitian Circular Economy,Building Bitcoin circular economy in Haiti,community,Haiti
+2026-04-01,23,,$1.5B sats,doblon8,,$1.5B sats,Sparrow Wallet,Improving air-gapped signing functionality in Sparrow Wallet,wallet,Global
+2026-04-01,23,,$1.5B sats,rawBit,,$1.5B sats,Developer Education,Visual editor for building and inspecting Bitcoin transactions,education,Global
