@@ -396,11 +396,11 @@ footer a{color:var(--orange);text-decoration:none}
 
   <div class="explorer-grid">
     <div class="explorer-chart">
-      <h3>Grants by Category</h3>
+      <h3>Category Mix of Current Selection</h3>
       <svg id="chart-cat" width="100%" height="320"></svg>
     </div>
     <div class="explorer-chart">
-      <h3>Grants per Round</h3>
+      <h3>Rounds in Current Selection</h3>
       <svg id="chart-rounds" width="100%" height="280"></svg>
     </div>
   </div>
@@ -461,16 +461,17 @@ const REGION_COLORS = {
   'Europe':'#AB47BC', 'MENA':'#EF5350', 'Global':'#78909C', 'Oceania':'#FFD700'
 };
 
-// Assign coordinates: empty loc → random global scatter, then jitter duplicates
-function seededRandom(seed) {
-  let x = Math.sin(seed) * 10000;
-  return x - Math.floor(x);
-}
+// Only plot geographically specific grants on the map.
+// Exclude abstract / regional labels like Global, Africa, Asia, Middle East, etc.
+const NON_SPECIFIC_LOCS = new Set([
+  'Global','Africa','Asia','Europe','Americas','MENA',
+  'Middle East','West Africa','East Asia','Central America','Caribbean'
+]);
 
-// Give empty-location grants a scattered "Global" position
-GRANTS.forEach((g, i) => {
-  if (!g.loc || g.loc === '') g.loc = 'Global';
-  const c = GEO[g.loc];
+GRANTS.forEach((g) => {
+  const loc = (g.loc || '').trim();
+  if (!loc || NON_SPECIFIC_LOCS.has(loc)) return;
+  const c = GEO[loc];
   if (c) { g.lat = c[0]; g.lng = c[1]; }
 });
 
