@@ -605,13 +605,13 @@ function initViz(){
 
   oceanGradient.append('stop')
     .attr('offset', '0%')
-    .attr('stop-color', '#36577a');
+    .attr('stop-color', '#25425f');
   oceanGradient.append('stop')
     .attr('offset', '55%')
-    .attr('stop-color', '#223a57');
+    .attr('stop-color', '#17293d');
   oceanGradient.append('stop')
     .attr('offset', '100%')
-    .attr('stop-color', '#16263a');
+    .attr('stop-color', '#0d1724');
 
   const mapGlow = defs.append('filter')
     .attr('id', 'mapGlow')
@@ -623,9 +623,30 @@ function initViz(){
   mapGlow.append('feDropShadow')
     .attr('dx', 0)
     .attr('dy', 0)
-    .attr('stdDeviation', 10)
-    .attr('flood-color', '#8fb7e0')
-    .attr('flood-opacity', 0.18);
+    .attr('stdDeviation', 13)
+    .attr('flood-color', '#bfe1ff')
+    .attr('flood-opacity', 0.28);
+
+  const dotGlow = defs.append('filter')
+    .attr('id', 'dotGlow')
+    .attr('x', '-120%')
+    .attr('y', '-120%')
+    .attr('width', '340%')
+    .attr('height', '340%');
+
+  dotGlow.append('feDropShadow')
+    .attr('dx', 0)
+    .attr('dy', 0)
+    .attr('stdDeviation', 3.4)
+    .attr('flood-color', '#f7931a')
+    .attr('flood-opacity', 0.55);
+
+  dotGlow.append('feDropShadow')
+    .attr('dx', 0)
+    .attr('dy', 0)
+    .attr('stdDeviation', 6.5)
+    .attr('flood-color', '#ffd27a')
+    .attr('flood-opacity', 0.22);
 
   gMap = svg.append('g').attr('class','map-layer');
   gArea = svg.append('g').attr('class','area-layer');
@@ -670,11 +691,11 @@ function initViz(){
     .join('path')
     .attr('class', 'country')
     .attr('d', path)
-    .attr('fill', '#aab7c6')
+    .attr('fill', '#8d9baa')
     .attr('fill-opacity', 0.94)
-    .attr('stroke', '#73869c')
+    .attr('stroke', '#607285')
     .attr('stroke-opacity', 0.9)
-    .attr('stroke-width', 0.9);
+    .attr('stroke-width', 1);
 
   // Trigger initial scene if scrollama already fired
   if(currentScene >= 0) updateViz(currentScene);
@@ -699,6 +720,7 @@ function updateViz(sceneIdx){
   const enter = dots.enter()
     .append('circle')
     .attr('class', 'grant-dot')
+    .attr('filter', 'url(#dotGlow)')
     .attr('cx', d => projection([d.lng, d.lat])[0])
     .attr('cy', d => projection([d.lng, d.lat])[1])
     .attr('r', 0)
@@ -1097,13 +1119,13 @@ function applyFilters(){
       let match = true;
       if (activeRegion && d.reg !== activeRegion) match = false;
       if (activeCat && d.cat !== activeCat) match = false;
-      return match ? 0.92 : 0.12;
+      return match ? 1 : 0.16;
     })
     .attr('r', d => {
       let match = true;
       if (activeRegion && d.reg !== activeRegion) match = false;
       if (activeCat && d.cat !== activeCat) match = false;
-      return match ? 4.25 : 2.2;
+      return match ? 4.8 : 2.5;
     });
 }
 
