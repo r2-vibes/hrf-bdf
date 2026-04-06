@@ -1056,13 +1056,13 @@ function renderContextCopy(filtered){
   const container = document.getElementById('context-copy');
   if (!container) return;
 
-  const mapped = filtered.filter(g => g.lat != null && g.lng != null).length;
-  const globalish = filtered.filter(g => g.lat == null || g.lng == null).length;
+  const geographicallySpecific = filtered.filter(g => g.loc && g.loc !== 'Global').length;
+  const broaderScope = filtered.filter(g => !g.loc || g.loc === 'Global').length;
   const recipients = new Set(filtered.map(g => g.name)).size;
 
   container.innerHTML = `
     <h3>What the map is showing</h3>
-    <p><strong>${mapped}</strong> grants in this view have clear geographic anchors. <strong>${globalish}</strong> are broader, distributed, or remote, so the map stays honest instead of pretending every grant belongs to one precise dot.</p>
+    <p><strong>${geographicallySpecific}</strong> grants in this view are tagged to a specific place. <strong>${broaderScope}</strong> are global, cross-border, or not tied to one geography in the source data.</p>
     <p>This selection spans <strong>${recipients}</strong> recipients. Read it as a builder network, not just a pile of pins.</p>
   `;
 }
