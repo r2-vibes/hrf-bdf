@@ -208,37 +208,14 @@ body{font-family:var(--font-text);background:var(--bg);color:var(--text);line-he
 .selection-summary{
   color:var(--muted);font-size:.9rem;line-height:1.6;margin:-1rem 0 1.75rem;
 }
-.featured-grants{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;
-}
-.featured-card,.global-card{
-  background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem;
-}
-.featured-kicker,.global-kicker{
-  font-family:var(--font-mono);font-size:.68rem;color:var(--green);letter-spacing:.1em;
-  text-transform:uppercase;margin-bottom:.5rem;
-}
-.featured-card h4{font-size:1rem;margin-bottom:.4rem}
-.featured-meta{
-  color:var(--muted);font-size:.78rem;margin-bottom:.55rem;
-}
-.featured-desc,.context-copy p{
+.context-copy p{
   color:var(--body);font-size:.9rem;line-height:1.6;
 }
-.context-panel{
-  display:grid;grid-template-columns:1.1fr .9fr;gap:1rem;margin-bottom:2rem;
+.context-copy{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.15rem;margin-bottom:2rem;
 }
-.context-copy,.context-image{
-  background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;
-}
-.context-copy{padding:1.1rem 1.15rem;}
 .context-copy h3{font-size:1rem;margin-bottom:.55rem;}
 .context-copy p + p{margin-top:.7rem;}
-.context-image{position:relative;min-height:320px;background:#070b10;}
-.context-image img{width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.92) contrast(1.02) brightness(.72);}
-.context-image::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(7,11,16,.08), rgba(7,11,16,.62));pointer-events:none;}
-.context-key{position:absolute;top:1rem;left:1rem;padding:.4rem .65rem;border-radius:999px;background:rgba(6,10,14,.82);border:1px solid rgba(255,255,255,.08);font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--green);z-index:2;}
-.context-caption{position:absolute;left:1rem;right:1rem;bottom:1rem;padding:.85rem 1rem;background:rgba(6,10,14,.8);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.08);border-radius:12px;color:#d7dee7;font-size:.82rem;line-height:1.5;z-index:2;}
 .grant-table-wrap{
   background:var(--card);border:1px solid var(--border);
   border-radius:12px;overflow:hidden;
@@ -279,7 +256,7 @@ footer a{color:var(--orange);text-decoration:none}
 @media(max-width:768px){
   .hero-stats{gap:1.5rem;flex-wrap:wrap;justify-content:center}
   .step-content{max-width:90%;padding:1.5rem}
-  .explorer-grid,.featured-grants,.context-panel{grid-template-columns:1fr}
+  .explorer-grid{grid-template-columns:1fr}
   .grant-table{font-size:.75rem}
   .grant-table th,.grant-table td{padding:.5rem .6rem}
 }
@@ -434,20 +411,11 @@ footer a{color:var(--orange);text-decoration:none}
 
   <div class="selection-summary" id="selection-summary"></div>
 
-  <div class="context-panel">
-    <div class="context-copy" id="context-copy">
-      <h3>What the map is showing</h3>
-      <p>The map shows the geographic footprint of the fund, not the whole perimeter of impact. Some grants land in a specific place. Others support people, tools, and communities that operate across borders.</p>
-      <p>That is the actual pattern here: local builders, regional networks, and global public goods reinforcing each other.</p>
-    </div>
-    <figure class="context-image">
-      <div class="context-key">Portfolio context</div>
-      <img src="assets/grants-collage.jpg" alt="Supporting image for the HRF Bitcoin Development Fund explorer">
-      <figcaption class="context-caption">A supporting visual for the builder network behind the dots, added with a clear label so it reads like part of the story instead of a random image.</figcaption>
-    </figure>
+  <div class="context-copy" id="context-copy">
+    <h3>What the map is showing</h3>
+    <p>The map shows the geographic footprint of the fund, not the whole perimeter of impact. Some grants land in a specific place. Others support people, tools, and communities that operate across borders.</p>
+    <p>That is the actual pattern here: local builders, regional networks, and global public goods reinforcing each other.</p>
   </div>
-
-  <div class="featured-grants" id="featured-grants"></div>
 
   <div class="explorer-grid">
     <div class="explorer-chart">
@@ -1015,41 +983,9 @@ function summarizeSelection(filtered){
   if (activeCat) parts.push(`<strong>${CAT_LABELS[activeCat] || activeCat}</strong>`);
   else parts.push('<strong>all categories</strong>');
 
-  const mapped = filtered.filter(g => g.lat != null && g.lng != null).length;
-  const globalCount = filtered.filter(g => g.lat == null || g.lng == null).length;
-  return `Showing ${filtered.length} grants across ${parts.join(' × ')}. <strong>${mapped}</strong> have precise mappable locations; <strong>${globalCount}</strong> are global or cross-regional and stay in the explorer instead of being forced onto the map.`;
-}
-
-function renderFeaturedGrants(filtered){
-  const container = document.getElementById('featured-grants');
-  if (!container) return;
-
-  const scored = filtered.map(g => ({
-    ...g,
-    _score: (g.lat != null && g.lng != null ? 5 : 0) + (g.desc ? Math.min(g.desc.length / 80, 3) : 0) + (g.reg && g.reg !== 'Global' ? 1 : 0)
-  })).sort((a,b) => b._score - a._score || a.rn - b.rn);
-
-  const picks = [];
-  const seenCats = new Set();
-  for (const g of scored) {
-    if (picks.length >= 3) break;
-    if (seenCats.has(g.cat) && scored.length > 3) continue;
-    picks.push(g);
-    seenCats.add(g.cat);
-  }
-  for (const g of scored) {
-    if (picks.length >= 3) break;
-    if (!picks.find(x => x.name === g.name && x.proj === g.proj)) picks.push(g);
-  }
-
-  container.innerHTML = picks.map(g => `
-    <article class="featured-card">
-      <div class="featured-kicker">Featured grant in current selection</div>
-      <h4>${g.proj}</h4>
-      <div class="featured-meta">${g.name} · Round ${g.rn} · ${g.reg || 'Region unknown'}${g.loc ? ` · ${g.loc}` : ''}</div>
-      <div class="featured-desc">${g.desc || 'No description available.'}</div>
-    </article>
-  `).join('');
+  const geographicallySpecific = filtered.filter(g => g.loc && g.loc !== 'Global').length;
+  const broaderScope = filtered.filter(g => !g.loc || g.loc === 'Global').length;
+  return `Showing ${filtered.length} grants across ${parts.join(' × ')}. <strong>${geographicallySpecific}</strong> are tagged to a specific geography; <strong>${broaderScope}</strong> are global, cross-border, or not tied to one place in the source data.`;
 }
 
 function renderContextCopy(filtered){
@@ -1075,7 +1011,7 @@ function applyFilters(){
   // Update stats bar
   const statsDiv = document.getElementById('explorer-stats');
   const uniqueRecipients = new Set(filtered.map(g=>g.name)).size;
-  const uniqueCountries = new Set(filtered.filter(g=>g.lat != null && g.lng != null).map(g=>g.loc)).size;
+  const uniqueCountries = new Set(filtered.filter(g=>g.loc && g.loc !== 'Global').map(g=>g.loc)).size;
   const uniqueCategories = new Set(filtered.map(g=>g.cat)).size;
   statsDiv.innerHTML = [
     ['Grants', filtered.length, 'var(--orange)'],
@@ -1093,7 +1029,6 @@ function applyFilters(){
   if (selectionSummary) selectionSummary.innerHTML = summarizeSelection(filtered);
 
   renderContextCopy(filtered);
-  renderFeaturedGrants(filtered);
 
   // Table
   const tbody = document.getElementById('table-body');
