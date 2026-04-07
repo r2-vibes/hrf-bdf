@@ -481,7 +481,7 @@ const SCENES = [
   { maxRound:14, title:'Scale' },
   { maxRound:14, title:'Network Effect', showLinks:true },
   { maxRound:23, title:'Map Today' },
-  { maxRound:23, title:'The Shift', showAreaChart:true },
+  { maxRound:23, title:'The Shift' },
   { maxRound:23, title:"What's Next", highlightRound:23 },
   { maxRound:23, title:'CTA' },
 ];
@@ -720,12 +720,7 @@ function updateViz(sceneIdx){
       .transition().duration(400).attr('opacity',0).remove();
   }
 
-  // ─── STACKED AREA CHART (Scene 7) ───
-  if(scene.showAreaChart){
-    drawAreaChart();
-  } else {
-    gArea.selectAll('*').transition().duration(400).attr('opacity',0).remove();
-  }
+  gArea.selectAll('*').remove();
 
   // ─── COUNTER LABELS ───
   const count = visible.length;
@@ -758,88 +753,6 @@ function updateViz(sceneIdx){
   labels.transition().duration(300).text(d=>d.text);
 }
 
-function drawAreaChart(){
-  // Build stacked area data — categories over rounds
-  const topCats = ['education','lightning','privacy','wallet','core','payments','community','nostr','ecash','security'];
-  const rounds = d3.range(1,24);
-
-  const areaW = width * 0.5;
-  const areaH = height * 0.25;
-  const areaX = width * 0.5 - areaW/2;
-  const areaY = height * 0.7;
-
-  const stackData = rounds.map(rn => {
-    const row = {round: rn};
-    topCats.forEach(c => {
-      row[c] = GRANTS.filter(g => g.rn === rn && g.cat === c).length;
-    });
-    return row;
-  });
-
-  const stack = d3.stack().keys(topCats);
-  const series = stack(stackData);
-
-  const x = d3.scaleLinear().domain([1,23]).range([0, areaW]);
-  const y = d3.scaleLinear()
-    .domain([0, d3.max(series, s => d3.max(s, d => d[1]))])
-    .range([areaH, 0]);
-
-  const area = d3.area()
-    .x(d => areaX + x(d.data.round))
-    .y0(d => areaY + y(d[0]))
-    .y1(d => areaY + y(d[1]))
-    .curve(d3.curveBasis);
-
-  // Background for chart
-  gArea.selectAll('rect.area-bg').data([1]).join('rect')
-    .attr('class','area-bg')
-    .attr('x', areaX - 10).attr('y', areaY - 10)
-    .attr('width', areaW + 20).attr('height', areaH + 40)
-    .attr('rx', 8)
-    .attr('fill', 'rgba(10,10,10,.85)')
-    .attr('stroke', '#222')
-    .attr('opacity', 0)
-    .transition().duration(600).attr('opacity', 1);
-
-  // Title
-  gArea.selectAll('text.area-title').data([1]).join('text')
-    .attr('class','area-title')
-    .attr('x', areaX).attr('y', areaY - 20)
-    .attr('fill','#666')
-    .attr('font-family','JetBrains Mono, monospace')
-    .attr('font-size','11px')
-    .text('CATEGORY EVOLUTION BY ROUND')
-    .attr('opacity',0)
-    .transition().duration(600).attr('opacity',1);
-
-  // Areas
-  const paths = gArea.selectAll('path.area')
-    .data(series, d => d.key);
-
-  paths.enter()
-    .append('path')
-    .attr('class','area')
-    .attr('d', area)
-    .attr('fill', d => CAT_COLORS[d.key] || '#666')
-    .attr('opacity', 0)
-    .transition().duration(800)
-    .attr('opacity', 0.7);
-
-  // X axis labels
-  [1,5,10,15,20,23].forEach(rn => {
-    gArea.append('text')
-      .attr('class','area-axis')
-      .attr('x', areaX + x(rn))
-      .attr('y', areaY + areaH + 18)
-      .attr('text-anchor','middle')
-      .attr('fill','#444')
-      .attr('font-family','JetBrains Mono, monospace')
-      .attr('font-size','10px')
-      .text('R'+rn)
-      .attr('opacity',0)
-      .transition().duration(600).delay(200).attr('opacity',1);
-  });
-}
 
 // ═══════════════════════════════════════════════════════════
 // SCROLLAMA
