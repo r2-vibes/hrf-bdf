@@ -191,9 +191,6 @@ body{font-family:var(--font-text);background:var(--bg);color:var(--text);line-he
   border-color:var(--orange);color:var(--orange);
   background:rgba(247,147,26,.08);
 }
-.selection-summary{
-  color:var(--muted);font-size:.9rem;line-height:1.6;margin:-1rem 0 1.75rem;
-}
 .grant-table-wrap{
   background:var(--card);border:1px solid var(--border);
   border-radius:12px;overflow:hidden;
@@ -383,10 +380,6 @@ footer a{color:var(--orange);text-decoration:none}
     <div class="filters" id="filters"></div>
   </div>
 
-  <div class="explorer-stats" id="explorer-stats" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem;text-align:center">
-  </div>
-
-  <div class="selection-summary" id="selection-summary"></div>
 
   <div class="grant-table-wrap" style="max-height:600px;overflow-y:auto">
     <table class="grant-table">
@@ -951,25 +944,6 @@ function applyFilters(){
   if (activeRegion) filtered = filtered.filter(g => g.reg === activeRegion);
   if (activeCat) filtered = filtered.filter(g => g.cat === activeCat);
 
-  // Update stats bar
-  const statsDiv = document.getElementById('explorer-stats');
-  const uniqueRecipients = new Set(filtered.map(g=>g.name)).size;
-  const uniqueCountries = new Set(filtered.filter(g=>g.loc && g.loc !== 'Global').map(g=>g.loc)).size;
-  const uniqueCategories = new Set(filtered.map(g=>g.cat)).size;
-  statsDiv.innerHTML = [
-    ['Grants', filtered.length, 'var(--orange)'],
-    ['Recipients', uniqueRecipients, 'var(--green)'],
-    ['Countries', uniqueCountries, '#4FC3F7'],
-    ['Categories', uniqueCategories, '#AB47BC'],
-  ].map(([label,val,color]) => `
-    <div style="padding:1rem;background:#111;border-radius:8px;border:1px solid #222">
-      <div style="font-family:var(--font-mono);font-size:1.8rem;color:${color}">${val}</div>
-      <div style="font-size:.8rem;color:var(--muted)">${label}</div>
-    </div>
-  `).join('');
-
-  const selectionSummary = document.getElementById('selection-summary');
-  if (selectionSummary) selectionSummary.innerHTML = summarizeSelection(filtered);
 
   // Table
   const tbody = document.getElementById('table-body');
