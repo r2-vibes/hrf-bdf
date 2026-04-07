@@ -396,6 +396,7 @@ footer a{color:var(--orange);text-decoration:none}
 
 
   <div class="grant-table-wrap" style="max-height:600px;overflow-y:auto">
+    <div class="mobile-grant-list" id="mobile-grant-list"></div>
     <table class="grant-table">
       <thead>
         <tr>
@@ -1017,7 +1018,7 @@ function initHeroCounters(){
       const prefix = el.dataset.prefix || '';
       const suffix = el.dataset.suffix || '';
       const start = performance.now();
-      const duration = 1600;
+      const duration = 2200;
       const tick = (now) => {
         const progress = Math.min((now - start) / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
@@ -1035,7 +1036,7 @@ function initHeroCounters(){
     if (entries.some(entry => entry.isIntersecting)) { animate(); obs.disconnect(); }
   }, {threshold:0.2});
   obs.observe(hero);
-  setTimeout(animate, 700);
+  setTimeout(animate, 1200);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
