@@ -452,6 +452,26 @@ GRANTS.forEach((g) => {
   if (c) { g.lat = c[0]; g.lng = c[1]; }
 });
 
+// Additional geographic dots for grants with non-specific loc
+const EXTRA_DOTS = {
+  'Arabic Hodl': [26.82, 30.80],
+  'Breez': [31.05, 34.85],
+  'Calvin Kim': [35.91, 127.77],
+  'Vasil Dimov': [46.15, 14.99],
+  'NetBlocks': [38.96, 35.24],
+  'RoboSats': [6.42, -66.59],
+  'Furszy': [-38.42, -63.62],
+  'La Librería de Satoshi': [23.63, -102.55],
+  'Exonumia': [-30.56, 22.94],
+  'Mi Primer Bitcoin': [13.79, -88.90],
+};
+GRANTS.forEach(g => {
+  if (!g.lat && EXTRA_DOTS[g.name]) {
+    const [lat, lng] = EXTRA_DOTS[g.name];
+    g.lat = lat; g.lng = lng;
+  }
+});
+
 // Jitter: spread dots that share the same base coordinates
 const locGroups = {};
 GRANTS.forEach(g => {
