@@ -191,54 +191,6 @@ body{font-family:var(--font-text);background:var(--bg);color:var(--text);line-he
   border-color:var(--orange);color:var(--orange);
   background:rgba(247,147,26,.08);
 }
-.explorer-grid{
-  display:grid;grid-template-columns:minmax(0,1.35fr) minmax(320px,.65fr);gap:1.35rem;margin:0 0 3rem;align-items:start;
-}
-.chart-panel{
-  background:linear-gradient(180deg, rgba(14,18,24,.96), rgba(10,13,18,.98));
-  border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1.35rem;
-  box-shadow:0 18px 40px rgba(0,0,0,.28);
-}
-.chart-panel-header{
-  display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;margin-bottom:1rem;
-}
-.chart-panel h3{
-  font-family:var(--font-mono);font-size:.78rem;color:var(--green);
-  text-transform:uppercase;letter-spacing:.12em;margin-bottom:.45rem;
-}
-.chart-panel-title{
-  font-size:1.15rem;font-weight:600;color:#f5f7fa;line-height:1.35;
-}
-.chart-panel-note{
-  max-width:34rem;font-size:.92rem;color:#b8c2cf;line-height:1.6;
-}
-.chart-key{
-  min-width:220px;padding:.9rem 1rem;border-radius:14px;
-  background:rgba(247,147,26,.07);border:1px solid rgba(247,147,26,.18);
-}
-.chart-key-title{
-  font-family:var(--font-mono);font-size:.68rem;color:var(--orange);
-  text-transform:uppercase;letter-spacing:.12em;margin-bottom:.55rem;
-}
-.chart-key ul{list-style:none;display:grid;gap:.5rem;margin:0;padding:0}
-.chart-key li{display:flex;gap:.6rem;align-items:flex-start;color:#dce4ee;font-size:.84rem;line-height:1.45}
-.chart-key-dot{
-  width:.72rem;height:.72rem;border-radius:999px;flex:0 0 .72rem;margin-top:.2rem;
-  background:radial-gradient(circle, rgba(255,211,122,1) 0%, rgba(247,147,26,.95) 45%, rgba(247,147,26,.1) 100%);
-  box-shadow:0 0 10px rgba(247,147,26,.75), 0 0 22px rgba(255,210,122,.35);
-}
-.chart-stack{display:grid;gap:1rem}
-.explorer-chart{
-  background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);
-  border-radius:14px;padding:1.15rem;min-height:280px;
-}
-.explorer-chart h4{
-  font-family:var(--font-mono);font-size:.72rem;color:var(--muted);
-  text-transform:uppercase;letter-spacing:.12em;margin-bottom:.35rem;
-}
-.chart-note{
-  font-size:.82rem;color:var(--muted);line-height:1.55;margin-bottom:.9rem;
-}
 .selection-summary{
   color:var(--muted);font-size:.9rem;line-height:1.6;margin:-1rem 0 1.75rem;
 }
@@ -282,9 +234,6 @@ footer a{color:var(--orange);text-decoration:none}
 @media(max-width:768px){
   .hero-stats{gap:1.5rem;flex-wrap:wrap;justify-content:center}
   .step-content{max-width:90%;padding:1.5rem}
-  .explorer-grid{grid-template-columns:1fr}
-  .chart-panel-header{flex-direction:column}
-  .chart-key{min-width:0;width:100%}
   .grant-table{font-size:.75rem}
   .grant-table th,.grant-table td{padding:.5rem .6rem}
 }
@@ -438,37 +387,6 @@ footer a{color:var(--orange);text-decoration:none}
   </div>
 
   <div class="selection-summary" id="selection-summary"></div>
-
-  <div class="explorer-grid">
-    <div class="chart-panel">
-      <div class="chart-panel-header">
-        <div>
-          <h3>Selection breakdown</h3>
-          <div class="chart-panel-title">How this filtered slice of the portfolio breaks down</div>
-          <p class="chart-panel-note">The left chart shows what kinds of work dominate the current selection. The right chart shows when those grants landed across funding rounds.</p>
-        </div>
-        <aside class="chart-key" aria-label="Chart key">
-          <div class="chart-key-title">Key</div>
-          <ul>
-            <li><span class="chart-key-dot"></span><span>Orange bars show grants in the current filtered selection.</span></li>
-            <li><span class="chart-key-dot"></span><span>Category labels describe the work funded. Round labels show when those grants were awarded.</span></li>
-          </ul>
-        </aside>
-      </div>
-      <div class="chart-stack">
-        <div class="explorer-chart">
-          <h4>Category mix of current selection</h4>
-          <p class="chart-note">Which types of work dominate the slice you are looking at right now.</p>
-          <svg id="chart-cat" width="100%" height="320"></svg>
-        </div>
-        <div class="explorer-chart">
-          <h4>Rounds in current selection</h4>
-          <p class="chart-note">When this slice of the portfolio landed over time.</p>
-          <svg id="chart-rounds" width="100%" height="280"></svg>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="grant-table-wrap" style="max-height:600px;overflow-y:auto">
     <table class="grant-table">
@@ -1067,9 +985,6 @@ function applyFilters(){
     </tr>
   `).join('');
 
-  drawCategoryChart(filtered);
-  drawRoundsChart(filtered);
-
   // Also highlight dots on map if visible
   d3.selectAll('.grant-dot')
     .transition().duration(300)
@@ -1097,104 +1012,6 @@ function applyFilters(){
       if (activeCat && d.cat !== activeCat) match = false;
       return match ? 1.25 : 0.8;
     });
-}
-
-function drawCategoryChart(data){
-  const svgEl = d3.select('#chart-cat');
-  svgEl.selectAll('*').remove();
-
-  const counts = d3.rollup(data, v=>v.length, d=>d.cat);
-  const sorted = [...counts.entries()].sort((a,b) => b[1]-a[1]);
-
-  const margin = {top:10, right:40, bottom:10, left:160};
-  const w = svgEl.node().getBoundingClientRect().width;
-  const barH = 18;
-  const gap = 4;
-  const h = sorted.length * (barH + gap);
-
-  svgEl.attr('height', Math.max(h + margin.top + margin.bottom, 320));
-
-  const x = d3.scaleLinear()
-    .domain([0, d3.max(sorted, d=>d[1])])
-    .range([0, w - margin.left - margin.right]);
-
-  const g = svgEl.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
-
-  sorted.forEach(([cat, count], i) => {
-    const y = i * (barH + gap);
-
-    g.append('text')
-      .attr('x', -8).attr('y', y + barH/2 + 4)
-      .attr('text-anchor','end')
-      .attr('fill', '#888')
-      .attr('font-size','11px')
-      .text(CAT_LABELS[cat] || cat);
-
-    g.append('rect')
-      .attr('x',0).attr('y', y)
-      .attr('width', 0)
-      .attr('height', barH)
-      .attr('rx', 3)
-      .attr('fill', CAT_COLORS[cat] || '#F7931A')
-      .attr('opacity', 0.8)
-      .transition().duration(500).delay(i*30)
-      .attr('width', x(count));
-
-    g.append('text')
-      .attr('x', x(count) + 6).attr('y', y + barH/2 + 4)
-      .attr('fill','#666')
-      .attr('font-family','JetBrains Mono, monospace')
-      .attr('font-size','11px')
-      .attr('opacity',0)
-      .text(count)
-      .transition().duration(500).delay(i*30)
-      .attr('opacity',1);
-  });
-}
-
-function drawRoundsChart(data){
-  const svgEl = d3.select('#chart-rounds');
-  svgEl.selectAll('*').remove();
-
-  const counts = d3.rollup(data, v=>v.length, d=>d.rn);
-  const rounds = d3.range(1,24).map(rn => ({rn, count: counts.get(rn)||0}));
-
-  const rect = svgEl.node().getBoundingClientRect();
-  const margin = {top:10, right:10, bottom:30, left:35};
-  const w = rect.width - margin.left - margin.right;
-  const h = 240;
-
-  svgEl.attr('height', h + margin.top + margin.bottom);
-
-  const x = d3.scaleBand().domain(rounds.map(d=>d.rn)).range([0,w]).padding(0.2);
-  const y = d3.scaleLinear().domain([0, d3.max(rounds, d=>d.count)]).range([h,0]);
-
-  const g = svgEl.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
-
-  // Bars
-  g.selectAll('rect').data(rounds).join('rect')
-    .attr('x', d => x(d.rn))
-    .attr('y', h)
-    .attr('width', x.bandwidth())
-    .attr('height', 0)
-    .attr('rx', 2)
-    .attr('fill', '#F7931A')
-    .attr('opacity', 0.8)
-    .transition().duration(500).delay((d,i)=>i*30)
-    .attr('y', d => y(d.count))
-    .attr('height', d => h - y(d.count));
-
-  // X axis
-  const xAxis = g.append('g')
-    .attr('transform', `translate(0,${h})`)
-    .call(d3.axisBottom(x).tickValues([1,5,10,15,20,23]).tickFormat(d=>'R'+d));
-  xAxis.selectAll('text').attr('fill','#666').attr('font-size','10px');
-  xAxis.selectAll('line,path').attr('stroke','#333');
-
-  // Y axis
-  const yAxis = g.append('g').call(d3.axisLeft(y).ticks(5));
-  yAxis.selectAll('text').attr('fill','#666').attr('font-size','10px');
-  yAxis.selectAll('line,path').attr('stroke','#333');
 }
 
 // ═══════════════════════════════════════════════════════════
