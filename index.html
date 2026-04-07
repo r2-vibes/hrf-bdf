@@ -192,30 +192,41 @@ body{font-family:var(--font-text);background:var(--bg);color:var(--text);line-he
   background:rgba(247,147,26,.08);
 }
 .grant-table-wrap{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:12px;overflow-x:auto;overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
+  background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015));border:1px solid var(--border);
+  border-radius:18px;overflow:hidden;
+  -webkit-overflow-scrolling:touch;box-shadow:0 22px 60px rgba(0,0,0,.24);
 }
 .grant-table{width:100%;border-collapse:collapse;font-size:.85rem}
 .grant-table thead{
-  background:rgba(247,147,26,.05);position:sticky;top:0;
+  background:rgba(18,18,20,.94);position:sticky;top:0;backdrop-filter:blur(14px);
 }
 .grant-table th{
   font-family:var(--font-mono);font-size:.7rem;color:var(--muted);
   text-transform:uppercase;letter-spacing:.08em;
-  padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--border);
+  padding:.85rem 1rem;text-align:left;border-bottom:1px solid var(--border);
 }
 .grant-table td{
-  padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--body);
+  padding:.85rem 1rem;border-bottom:1px solid var(--border);color:var(--body);
   vertical-align:top;
 }
 .grant-table tr:hover td{background:rgba(247,147,26,.03)}
 .cat-badge{
   font-family:var(--font-mono);font-size:.65rem;
-  padding:.15rem .5rem;border-radius:10px;
+  padding:.24rem .58rem;border-radius:999px;
   background:rgba(247,147,26,.12);color:var(--orange);
   white-space:nowrap;
 }
+.mobile-grant-list{display:none}
+.mobile-grant-card{padding:1rem;border-bottom:1px solid var(--border);background:rgba(255,255,255,.015)}
+.mobile-grant-card:last-child{border-bottom:none}
+.mobile-grant-top{display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem;margin-bottom:.55rem}
+.mobile-round{font-family:var(--font-mono);font-size:.75rem;color:var(--orange);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.25rem}
+.mobile-date{font-size:.74rem;color:var(--muted);white-space:nowrap}
+.mobile-grantee{font-size:1rem;font-weight:700;color:var(--text);line-height:1.3}
+.mobile-project{font-size:.92rem;color:var(--body);line-height:1.45;margin:.35rem 0 .45rem}
+.mobile-desc{font-size:.8rem;color:var(--muted);line-height:1.5;margin-bottom:.7rem}
+.mobile-meta{display:flex;flex-wrap:wrap;gap:.45rem}
+.mobile-loc{display:inline-flex;align-items:center;padding:.22rem .5rem;border-radius:999px;border:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:.78rem;background:rgba(255,255,255,.02)}
 
 /* ═══════════════════════════════════════════════════════════
    FOOTER
@@ -232,7 +243,8 @@ footer a{color:var(--orange);text-decoration:none}
 @media(max-width:768px){
   .hero-stats{gap:1.5rem;flex-wrap:wrap;justify-content:center}
   .step-content{max-width:90%;padding:1.5rem}
-  .grant-table{font-size:.75rem}
+  .grant-table{display:none}
+  .mobile-grant-list{display:block}
   .grant-table th,.grant-table td{padding:.5rem .6rem}
 }
 </style>
@@ -245,11 +257,11 @@ footer a{color:var(--orange);text-decoration:none}
   <h1>Building Freedom <span>With Code</span></h1>
   <p class="hero-sub">How HRF helped fund Bitcoin’s public-goods stack — across wallets, privacy, infrastructure, education, and open-source tools worldwide.</p>
   <div class="hero-stats">
-    <div class="hero-stat"><span class="num">307</span><span class="label">Grants</span></div>
-    <div class="hero-stat"><span class="num">24</span><span class="label">Rounds</span></div>
-    <div class="hero-stat"><span class="num">248</span><span class="label">Recipients</span></div>
-    <div class="hero-stat"><span class="num">55+</span><span class="label">Countries</span></div>
-    <div class="hero-stat"><span class="num">$11.1M+</span><span class="label">Funded</span></div>
+    <div class="hero-stat"><span class="num" data-target="307">0</span><span class="label">Grants</span></div>
+    <div class="hero-stat"><span class="num" data-target="24">0</span><span class="label">Rounds</span></div>
+    <div class="hero-stat"><span class="num" data-target="248">0</span><span class="label">Recipients</span></div>
+    <div class="hero-stat"><span class="num" data-target="55" data-suffix="+">0+</span><span class="label">Countries</span></div>
+    <div class="hero-stat"><span class="num" data-target="11.1" data-prefix="$" data-suffix="M+" data-decimals="1">$0.0M+</span><span class="label">Funded</span></div>
   </div>
   <div class="scroll-hint">
     <span>SCROLL TO EXPLORE</span>
@@ -972,10 +984,39 @@ function applyFilters(){
 // ═══════════════════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════════════════
+function initHeroCounters(){
+  const nums = Array.from(document.querySelectorAll('.hero-stat .num[data-target]'));
+  if (!nums.length) return;
+  const hero = document.querySelector('.hero');
+  const animate = () => nums.forEach(el => {
+    const target = parseFloat(el.dataset.target || '0');
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const start = performance.now();
+    const duration = 1600;
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = target * eased;
+      const out = decimals ? value.toFixed(decimals) : Math.round(value).toString();
+      el.textContent = `${prefix}${out}${suffix}`;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+  if (!hero || !('IntersectionObserver' in window)) return animate();
+  const obs = new IntersectionObserver((entries)=>{
+    if (entries.some(entry => entry.isIntersecting)) { animate(); obs.disconnect(); }
+  }, {threshold:0.35});
+  obs.observe(hero);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   try { initViz(); } catch(e) { console.error('initViz:', e); }
   try { initScrollama(); } catch(e) { console.error('initScrollama:', e); }
   try { initExplorer(); } catch(e) { console.error('initExplorer:', e); }
+  try { initHeroCounters(); } catch(e) { console.error('initHeroCounters:', e); }
 });
 </script>
 </body>
