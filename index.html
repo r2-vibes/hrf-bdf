@@ -952,6 +952,26 @@ function applyFilters(){
     </tr>
   `).join('');
 
+  const mobileList = document.getElementById('mobile-grant-list');
+  if (mobileList) mobileList.innerHTML = filtered.map(g => `
+    <article class="mobile-grant-card">
+      <div class="mobile-grant-top">
+        <div>
+          <div class="mobile-round">Round ${g.rn}</div>
+          <div class="mobile-grantee">${g.name}</div>
+        </div>
+        <div class="mobile-date">${g.rd ? new Date(g.rd+'T00:00').toLocaleDateString('en-US',{month:'short',year:'numeric'}) : '—'}</div>
+      </div>
+      <div class="mobile-project">${g.proj}</div>
+      <div class="mobile-desc">${g.desc || ''}</div>
+      <div class="mobile-meta">
+        <span class="cat-badge" style="background:${CAT_COLORS[g.cat]||'var(--orange)'}22;color:${CAT_COLORS[g.cat]||'var(--orange)'}">${CAT_LABELS[g.cat]||g.cat}</span>
+        <span class="mobile-loc">${g.reg||'—'}</span>
+        <span class="mobile-loc">${g.loc||'—'}</span>
+      </div>
+    </article>
+  `).join('');
+
   // Also highlight dots on map if visible
   d3.selectAll('.grant-dot')
     .transition().duration(300)
@@ -987,29 +1007,35 @@ function applyFilters(){
 function initHeroCounters(){
   const nums = Array.from(document.querySelectorAll('.hero-stat .num[data-target]'));
   if (!nums.length) return;
+  let started = false;
+  const animate = () => {
+    if (started) return;
+    started = true;
+    nums.forEach(el => {
+      const target = parseFloat(el.dataset.target || '0');
+      const decimals = parseInt(el.dataset.decimals || '0', 10);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const start = performance.now();
+      const duration = 1600;
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = target * eased;
+        const out = decimals ? value.toFixed(decimals) : Math.round(value).toString();
+        el.textContent = `${prefix}${out}${suffix}`;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  };
   const hero = document.querySelector('.hero');
-  const animate = () => nums.forEach(el => {
-    const target = parseFloat(el.dataset.target || '0');
-    const decimals = parseInt(el.dataset.decimals || '0', 10);
-    const prefix = el.dataset.prefix || '';
-    const suffix = el.dataset.suffix || '';
-    const start = performance.now();
-    const duration = 1600;
-    const tick = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const value = target * eased;
-      const out = decimals ? value.toFixed(decimals) : Math.round(value).toString();
-      el.textContent = `${prefix}${out}${suffix}`;
-      if (progress < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  });
-  if (!hero || !('IntersectionObserver' in window)) return animate();
+  if (!hero || !('IntersectionObserver' in window)) { animate(); return; }
   const obs = new IntersectionObserver((entries)=>{
     if (entries.some(entry => entry.isIntersecting)) { animate(); obs.disconnect(); }
-  }, {threshold:0.35});
+  }, {threshold:0.2});
   obs.observe(hero);
+  setTimeout(animate, 700);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
