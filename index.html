@@ -435,7 +435,7 @@ const CAT_LABELS = {
 
 const REGION_COLORS = {
   'All':'#fff', 'Africa':'#00DD44', 'Asia':'#F7931A', 'Americas':'#4FC3F7',
-  'Europe':'#AB47BC', 'MENA':'#EF5350', 'Global':'#78909C', 'Oceania':'#FFD700'
+  'Europe':'#AB47BC', 'MENA':'#EF5350', 'Global':'#78909C'
 };
 
 // Only plot geographically specific grants on the map.
@@ -809,7 +809,7 @@ let activeRegion = null;
 
 function initExplorer(){
   // Region filter buttons
-  const regions = ['All','Africa','Americas','Asia','Europe','MENA','Global','Oceania'];
+  const regions = ['All','Africa','Americas','Asia','Europe','MENA','Global'];
   const regionDiv = document.getElementById('region-filters');
   regions.forEach(reg => {
     const btn = document.createElement('button');
